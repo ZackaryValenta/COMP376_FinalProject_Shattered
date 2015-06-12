@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 65ee85956f3e37e4da6f10b55c5f3c6f
 folderAsset: yes
 timeCreated: 1433977415
+=======
+guid: 2818a89f1aef54009a8633d028036929
+folderAsset: yes
+timeCreated: 1433977662
+>>>>>>> Skyler
 licenseType: Free
 DefaultImporter:
   userData: 
