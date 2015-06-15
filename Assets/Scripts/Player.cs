@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
 
 	// control variables
 	bool allowDoubleJump;				// tracks if player can double jump (is false if they have already jumped twice)
-	float groundCheckRadius = 0.25f;
+	float groundCheckRadius = 0.5f;
 	float damagePushForce = 2.5f;
 	Vector2 facingDirection;
 	float currentFallTime;
