@@ -1,18 +1,23 @@
-﻿using UnityEngine;
+﻿using TreeEditor;
+using UnityEngine;
 using System.Collections;
 
-public class CameraMovement : MonoBehaviour {
+public class CameraMovement : MonoBehaviour
+{
+    [SerializeField] private Transform target;
+    [SerializeField] private float smooth = 5;
+    [SerializeField] private Vector3 velocity;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		float horizontalMovement = Input.GetAxis ("Horizontal");
-		float verticalMovement = Input.GetAxis ("Vertical");
+    private float initialZDistance;
 
-		Camera.main.transform.Translate(new Vector3 (horizontalMovement, verticalMovement, 0.0f));
-	}
+    void Start()
+    {
+        initialZDistance = transform.position.z;
+    }
+
+    void Update()
+    {
+        Vector3 newPosition = new Vector3(target.position.x, target.position.y, initialZDistance);
+        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smooth * Time.deltaTime);
+    }
 }
