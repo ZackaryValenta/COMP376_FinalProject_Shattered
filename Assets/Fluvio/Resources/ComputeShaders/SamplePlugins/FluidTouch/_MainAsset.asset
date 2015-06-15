@@ -1,0 +1,309 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -623334564, guid: b435991485f6c8a4f9af5ca764dd7f07, type: 3}
+  m_Name: _MainAsset
+  m_EditorClassIdentifier: 
+  m_DirectComputeShader: {fileID: 0}
+  m_ComputeShader: {fileID: 7200000, guid: 5aff2889f6b68f346b7f65d08a3f5842, type: 3}
+  m_OpenCLShader: {fileID: 4900000, guid: 22688895e3e9e284eb467e20c67621fa, type: 3}
+  m_OpenCLIncludePaths:
+  - ComputeShader.cginc
+  m_OpenCLIncludeSource:
+  - "#define FLUVIO_PLUGIN_DATA_0 Keyframe\r\n#define FLUVIO_PLUGIN_DATA_1 float\r\n#define
+    FLUVIO_PLUGIN_DATA_2 int\r\n#define FLUVIO_PLUGIN_DATA_3 float4\r\n\r\n#ifndef
+    FLUVIO_COMPUTE_INCLUDED\r\n#define FLUVIO_COMPUTE_INCLUDED\r\n#ifndef FLUVIO_LANG_INCLUDED\r\n#define
+    FLUVIO_LANG_INCLUDED\r\n#define FALSE 0\r\n#define TRUE !FALSE\r\n#ifdef FLUVIO_API_OPENCL\r\n#define
+    FLUVIO_BUFFER(bufferType) __global __read_only const bufferType*\r\n#define FLUVIO_BUFFER_RW(bufferType)
+    __global bufferType*\r\n#define FLUVIO_INITIALIZE(type) ((type)(0))\r\ninline
+    float lerp(float a, float b, float w) { return a + w*(b-a); }\r\ninline float2
+    lerp2(float2 a, float2 b, float w) { return a + w*(b-a); }\r\ninline float3 lerp3(float3
+    a, float3 b, float w) { return a + w*(b-a); }\r\ninline float4 lerp4(float4 a,
+    float4 b, float w) { return a + w*(b-a); }\r\n#define mat4x4 float16\r\ninline
+    float4 mul3x4(mat4x4 M, float4 v)\r\n{\r\nfloat4 r;\r\nfloat4 a = M.s048C;\r\nfloat4
+    b = M.s159D;\r\nfloat4 c = M.s26AE;\r\nr.x = dot(a.xyz, v.xyz) + a.w;\r\nr.y =
+    dot(b.xyz, v.xyz) + b.w;\r\nr.z = dot(c.xyz, v.xyz) + c.w;\r\nr.w = v.w;\r\nreturn
+    r;\r\n}\r\ninline float4 mulv(mat4x4 M, float4 v)\r\n{\r\nfloat4 r;\r\nfloat3
+    a = M.s048;\r\nfloat3 b = M.s159;\r\nfloat3 c = M.s26A;\r\nr.x = dot(a, v.xyz);\r\nr.y
+    = dot(b, v.xyz);\r\nr.z = dot(c, v.xyz);\r\nr.w = v.w;\r\nreturn r;\r\n}\r\n#else\r\n#ifndef
+    FLUVIO_API_UNITYNATIVE\r\n#define FLUVIO_API_UNITYNATIVE\r\n#endif\r\n#define
+    FLUVIO_BUFFER(bufferType) StructuredBuffer<bufferType>\r\n#define FLUVIO_BUFFER_RW(bufferType)
+    globallycoherent RWStructuredBuffer<bufferType>\r\n#define FLUVIO_INITIALIZE(type)
+    ((type)0)\r\n#define lerp2 lerp\r\n#define lerp3 lerp\r\n#define lerp4 lerp\r\n#define
+    fabs abs\r\n#define mat4x4 float4x4\r\ninline float4 mul3x4(mat4x4 M, float4 v)\r\n{\r\nfloat4
+    r;\r\nfloat4 a = float4(M._m00, M._m01, M._m02, M._m03);\r\nfloat4 b = float4(M._m10,
+    M._m11, M._m12, M._m13);\r\nfloat4 c = float4(M._m20, M._m21, M._m22, M._m23);\r\nr.x
+    = dot(a.xyz, v.xyz) + a.w;\r\nr.y = dot(b.xyz, v.xyz) + b.w;\r\nr.z = dot(c.xyz,
+    v.xyz) + c.w;\r\nr.w = v.w;\r\nreturn r;\r\n}\r\ninline float4 mulv(mat4x4 M,
+    float4 v)\r\n{\r\nfloat4 r;\r\nfloat3 a = float3(M._m00, M._m01, M._m02);\r\nfloat3
+    b = float3(M._m10, M._m11, M._m12);\r\nfloat3 c = float3(M._m20, M._m21, M._m22);\r\nr.x
+    = dot(a, v.xyz);\r\nr.y = dot(b, v.xyz);\r\nr.z = dot(c, v.xyz);\r\nr.w = v.w;\r\nreturn
+    r;\r\n}\r\n#endif\r\ntypedef struct {\r\nfloat4 gravity;\r\nfloat initialDensity;\r\nfloat
+    minimumDensity;\r\nfloat particleMass;\r\nfloat viscosity;\r\nfloat turbulence;\r\nfloat
+    surfaceTension;\r\nfloat gasConstant;\r\nfloat buoyancyCoefficient;\r\n} FluidData;\r\ntypedef
+    struct {\r\nfloat time;\r\nfloat value;\r\nfloat inTangent;\r\nfloat outTangent;\r\nint
+    tangentMode;\r\n} Keyframe;\r\ntypedef struct {\r\nfloat cR;\r\nfloat cG;\r\nfloat
+    cB;\r\nfloat cA;\r\nfloat time;\r\n} GradientColorKey;\r\ntypedef struct {\r\nfloat
+    alpha;\r\nfloat time;\r\n} GradientAlphaKey;\r\n#endif\r\n#define FLUVIO_PI 3.14159265359f\r\n#define
+    FLUVIO_THREAD_GROUP_SIZE 128\r\n#define FLUVIO_GRID_BUCKET_SIZE 32\r\n#define
+    FLUVIO_MAX_GRID_SIZE 32\r\n#define FLUVIO_EPSILON 0.0001f\r\n#define FLUVIO_MAX_SQR_VELOCITY_CHANGE
+    100.0f\r\n#define FLUVIO_TURBULENCE_CONSTANT 10.0f\r\n#define FLUVIO_FORCE_MODE_FORCE
+    0\r\n#define FLUVIO_FORCE_MODE_ACCELERATION 1\r\n#define FLUVIO_FORCE_MODE_IMPULSE
+    2\r\n#define FLUVIO_FORCE_MODE_VELOCITY_CHANGE 3\r\n#ifdef FLUVIO_SOLVER\r\n#define
+    FLUVIO_BUFFER_SOLVER_RW(bufferType) FLUVIO_BUFFER_RW(bufferType)\r\n#else\r\n#define
+    FLUVIO_PLUGIN\r\n#define FLUVIO_BUFFER_SOLVER_RW(bufferType) FLUVIO_BUFFER(bufferType)\r\n#endif\r\n#ifdef
+    FLUVIO_API_OPENCL\r\n#ifdef FLUVIO_PLUGIN\r\n#define FLUVIO_PLUGIN_ARG_0\r\n#define
+    FLUVIO_PLUGIN_ARG_1\r\n#define FLUVIO_PLUGIN_ARG_2\r\n#define FLUVIO_PLUGIN_ARG_3\r\n#define
+    FLUVIO_PLUGIN_ARG_4\r\n#define FLUVIO_PLUGIN_ARG_5\r\n#define FLUVIO_PLUGIN_ARG_6\r\n#define
+    FLUVIO_PLUGIN_ARG_7\r\n#define FLUVIO_PLUGIN_ARG_8\r\n#define FLUVIO_PLUGIN_ARG_9\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_0\r\n#undef FLUVIO_PLUGIN_ARG_0\r\n#define FLUVIO_PLUGIN_ARG_0
+    , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_0) fluvio_PluginData0\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_1\r\n#undef
+    FLUVIO_PLUGIN_ARG_1\r\n#define FLUVIO_PLUGIN_ARG_1 , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_1)
+    fluvio_PluginData1\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_2\r\n#undef FLUVIO_PLUGIN_ARG_2\r\n#define
+    FLUVIO_PLUGIN_ARG_2 , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_2) fluvio_PluginData2\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_3\r\n#undef FLUVIO_PLUGIN_ARG_3\r\n#define FLUVIO_PLUGIN_ARG_3
+    , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_3) fluvio_PluginData3\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_4\r\n#undef
+    FLUVIO_PLUGIN_ARG_4\r\n#define FLUVIO_PLUGIN_ARG_4 , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_4)
+    fluvio_PluginData4\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_5\r\n#undef FLUVIO_PLUGIN_ARG_5\r\n#define
+    FLUVIO_PLUGIN_ARG_5 , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_5) fluvio_PluginData5\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_6\r\n#undef FLUVIO_PLUGIN_ARG_6\r\n#define FLUVIO_PLUGIN_ARG_6
+    , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_6) fluvio_PluginData6\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_7\r\n#undef
+    FLUVIO_PLUGIN_ARG_7\r\n#define FLUVIO_PLUGIN_ARG_7 , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_7)
+    fluvio_PluginData7\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_8\r\n#undef FLUVIO_PLUGIN_ARG_8\r\n#define
+    FLUVIO_PLUGIN_ARG_8 , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_8) fluvio_PluginData8\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_9\r\n#undef FLUVIO_PLUGIN_ARG_9\r\n#define FLUVIO_PLUGIN_ARG_9
+    , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_9) fluvio_PluginData9\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_RW_0\r\n#undef
+    FLUVIO_PLUGIN_ARG_0\r\n#define FLUVIO_PLUGIN_ARG_0 , FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_0)
+    fluvio_PluginData0\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_RW_1\r\n#undef FLUVIO_PLUGIN_ARG_1\r\n#define
+    FLUVIO_PLUGIN_ARG_1 , FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_1) fluvio_PluginData1\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_2\r\n#undef FLUVIO_PLUGIN_ARG_2\r\n#define FLUVIO_PLUGIN_ARG_2
+    , FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_2) fluvio_PluginData2\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_3\r\n#undef FLUVIO_PLUGIN_ARG_3\r\n#define FLUVIO_PLUGIN_ARG_3
+    , FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_3) fluvio_PluginData3\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_4\r\n#undef FLUVIO_PLUGIN_ARG_4\r\n#define FLUVIO_PLUGIN_ARG_4
+    , FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_4) fluvio_PluginData4\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_5\r\n#undef FLUVIO_PLUGIN_ARG_5\r\n#define FLUVIO_PLUGIN_ARG_5
+    , FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_5) fluvio_PluginData5\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_6\r\n#undef FLUVIO_PLUGIN_ARG_6\r\n#define FLUVIO_PLUGIN_ARG_6
+    , FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_6) fluvio_PluginData6\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_7\r\n#undef FLUVIO_PLUGIN_ARG_7\r\n#define FLUVIO_PLUGIN_ARG_7
+    , FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_7) fluvio_PluginData7\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_8\r\n#undef FLUVIO_PLUGIN_ARG_8\r\n#define FLUVIO_PLUGIN_ARG_8
+    , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_RW_8) fluvio_PluginData8\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_9\r\n#undef FLUVIO_PLUGIN_ARG_9\r\n#define FLUVIO_PLUGIN_ARG_9
+    , FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_RW_9) fluvio_PluginData9\r\n#endif\r\n#endif\r\n#ifdef
+    FLUVIO_SOLVER\r\n#define FLUVIO_KERNEL_INDEX_GRID(kernelName) \\\r\n__kernel \\\r\nvoid
+    kernelName( \\\r\nint fluvio_FluidCount, \\\r\nint fluvio_ParticleCount, \\\r\nint
+    fluvio_DynamicParticleCount, \\\r\nint fluvio_Stride, \\\r\nfloat4 fluvio_KernelSize,
+    \\\r\nfloat4 fluvio_KernelFactors, \\\r\nfloat4 fluvio_Time, \\\r\nFLUVIO_BUFFER(FluidData)
+    fluvio_Fluid, \\\r\nFLUVIO_BUFFER(int) fluvio_FluidID, \\\r\nFLUVIO_BUFFER(int)
+    fluvio_ParticleID, \\\r\nFLUVIO_BUFFER(uint) fluvio_RandomSeed, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float4)
+    fluvio_Position, \\\r\nFLUVIO_BUFFER_RW(float4) fluvio_Velocity, \\\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Force, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float) fluvio_Density, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float)
+    fluvio_Pressure, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float4) fluvio_Normal, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float)
+    fluvio_NormalLen, \\\r\nFLUVIO_BUFFER_RW(float) fluvio_Turbulence, \\\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Vorticity, \\\r\nFLUVIO_BUFFER_RW(float) fluvio_Lifetime, \\\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Color, \\\r\nFLUVIO_BUFFER_SOLVER_RW(int) fluvio_NeighborCount, \\\r\nFLUVIO_BUFFER_SOLVER_RW(int)
+    fluvio_Neighbors, \\\r\nFLUVIO_BUFFER_SOLVER_RW(int) fluvio_IndexGrid, \\\r\nint
+    fluvio_IndexGridDepth)\r\n#define FLUVIO_KERNEL(kernelName) \\\r\n__kernel \\\r\nvoid
+    kernelName( \\\r\nint fluvio_FluidCount, \\\r\nint fluvio_ParticleCount, \\\r\nint
+    fluvio_DynamicParticleCount, \\\r\nint fluvio_Stride, \\\r\nfloat4 fluvio_KernelSize,
+    \\\r\nfloat4 fluvio_KernelFactors, \\\r\nfloat4 fluvio_Time, \\\r\nFLUVIO_BUFFER(FluidData)
+    fluvio_Fluid, \\\r\nFLUVIO_BUFFER(int) fluvio_FluidID, \\\r\nFLUVIO_BUFFER(int)
+    fluvio_ParticleID, \\\r\nFLUVIO_BUFFER(uint) fluvio_RandomSeed, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float4)
+    fluvio_Position, \\\r\nFLUVIO_BUFFER_RW(float4) fluvio_Velocity, \\\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Force, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float) fluvio_Density, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float)
+    fluvio_Pressure, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float4) fluvio_Normal, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float)
+    fluvio_NormalLen, \\\r\nFLUVIO_BUFFER_RW(float) fluvio_Turbulence, \\\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Vorticity, \\\r\nFLUVIO_BUFFER_RW(float) fluvio_Lifetime, \\\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Color, \\\r\nFLUVIO_BUFFER_SOLVER_RW(int) fluvio_NeighborCount, \\\r\nFLUVIO_BUFFER_SOLVER_RW(int)
+    fluvio_Neighbors)\r\n#else\r\n#define FLUVIO_KERNEL(kernelName) \\\r\n__kernel
+    \\\r\nvoid kernelName( \\\r\nint fluvio_FluidCount, \\\r\nint fluvio_ParticleCount,
+    \\\r\nint fluvio_DynamicParticleCount, \\\r\nint fluvio_Stride, \\\r\nfloat4 fluvio_KernelSize,
+    \\\r\nfloat4 fluvio_KernelFactors, \\\r\nfloat4 fluvio_Time, \\\r\nFLUVIO_BUFFER(FluidData)
+    fluvio_Fluid, \\\r\nFLUVIO_BUFFER(int) fluvio_FluidID, \\\r\nFLUVIO_BUFFER(int)
+    fluvio_ParticleID, \\\r\nFLUVIO_BUFFER(uint) fluvio_RandomSeed, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float4)
+    fluvio_Position, \\\r\nFLUVIO_BUFFER_RW(float4) fluvio_Velocity, \\\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Force, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float) fluvio_Density, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float)
+    fluvio_Pressure, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float4) fluvio_Normal, \\\r\nFLUVIO_BUFFER_SOLVER_RW(float)
+    fluvio_NormalLen, \\\r\nFLUVIO_BUFFER_RW(float) fluvio_Turbulence, \\\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Vorticity, \\\r\nFLUVIO_BUFFER_RW(float) fluvio_Lifetime, \\\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Color, \\\r\nFLUVIO_BUFFER_SOLVER_RW(int) fluvio_NeighborCount, \\\r\nFLUVIO_BUFFER_SOLVER_RW(int)
+    fluvio_Neighbors, \\\r\nint fluvio_IncludeFluidGroup, \\\r\nint fluvio_PluginFluidID
+    \\\r\nFLUVIO_PLUGIN_ARG_0 \\\r\nFLUVIO_PLUGIN_ARG_1 \\\r\nFLUVIO_PLUGIN_ARG_2
+    \\\r\nFLUVIO_PLUGIN_ARG_3 \\\r\nFLUVIO_PLUGIN_ARG_4 \\\r\nFLUVIO_PLUGIN_ARG_5
+    \\\r\nFLUVIO_PLUGIN_ARG_6 \\\r\nFLUVIO_PLUGIN_ARG_7 \\\r\nFLUVIO_PLUGIN_ARG_8
+    \\\r\nFLUVIO_PLUGIN_ARG_9)\r\n#endif\r\n#else\r\n#ifdef FLUVIO_PLUGIN\r\n#define
+    FLUVIO_PLUGIN_DECL_0\r\n#define FLUVIO_PLUGIN_DECL_1\r\n#define FLUVIO_PLUGIN_DECL_2\r\n#define
+    FLUVIO_PLUGIN_DECL_3\r\n#define FLUVIO_PLUGIN_DECL_4\r\n#define FLUVIO_PLUGIN_DECL_5\r\n#define
+    FLUVIO_PLUGIN_DECL_6\r\n#define FLUVIO_PLUGIN_DECL_7\r\n#define FLUVIO_PLUGIN_DECL_8\r\n#define
+    FLUVIO_PLUGIN_DECL_9\r\n#ifdef FLUVIO_PLUGIN_DATA_0\r\n#undef FLUVIO_PLUGIN_DECL_0\r\n#define
+    FLUVIO_PLUGIN_DECL_0 FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_0) fluvio_PluginData0\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_1\r\n#undef FLUVIO_PLUGIN_DECL_1\r\n#define FLUVIO_PLUGIN_DECL_1
+    FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_1) fluvio_PluginData1\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_2\r\n#undef
+    FLUVIO_PLUGIN_DECL_2\r\n#define FLUVIO_PLUGIN_DECL_2 FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_2)
+    fluvio_PluginData2\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_3\r\n#undef FLUVIO_PLUGIN_DECL_3\r\n#define
+    FLUVIO_PLUGIN_DECL_3 FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_3) fluvio_PluginData3\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_4\r\n#undef FLUVIO_PLUGIN_DECL_4\r\n#define FLUVIO_PLUGIN_DECL_4
+    FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_4) fluvio_PluginData4\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_5\r\n#undef
+    FLUVIO_PLUGIN_DECL_5\r\n#define FLUVIO_PLUGIN_DECL_5 FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_5)
+    fluvio_PluginData5\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_6\r\n#undef FLUVIO_PLUGIN_DECL_6\r\n#define
+    FLUVIO_PLUGIN_DECL_6 FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_6) fluvio_PluginData6\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_7\r\n#undef FLUVIO_PLUGIN_DECL_7\r\n#define FLUVIO_PLUGIN_DECL_7
+    FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_7) fluvio_PluginData7\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_8\r\n#undef
+    FLUVIO_PLUGIN_DECL_8\r\n#define FLUVIO_PLUGIN_DECL_8 FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_8)
+    fluvio_PluginData8\r\n#endif\r\n#ifdef FLUVIO_PLUGIN_DATA_9\r\n#undef FLUVIO_PLUGIN_DECL_9\r\n#define
+    FLUVIO_PLUGIN_DECL_9 FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_9) fluvio_PluginData9\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_0\r\n#undef FLUVIO_PLUGIN_DECL_0\r\n#define FLUVIO_PLUGIN_DECL_0
+    FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_0) fluvio_PluginData0\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_1\r\n#undef FLUVIO_PLUGIN_DECL_1\r\n#define FLUVIO_PLUGIN_DECL_1
+    FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_1) fluvio_PluginData1\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_2\r\n#undef FLUVIO_PLUGIN_DECL_2\r\n#define FLUVIO_PLUGIN_DECL_2
+    FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_2) fluvio_PluginData2\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_3\r\n#undef FLUVIO_PLUGIN_DECL_3\r\n#define FLUVIO_PLUGIN_DECL_3
+    FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_3) fluvio_PluginData3\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_4\r\n#undef FLUVIO_PLUGIN_DECL_4\r\n#define FLUVIO_PLUGIN_DECL_4
+    FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_4) fluvio_PluginData4\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_5\r\n#undef FLUVIO_PLUGIN_DECL_5\r\n#define FLUVIO_PLUGIN_DECL_5
+    FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_5) fluvio_PluginData5\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_6\r\n#undef FLUVIO_PLUGIN_DECL_6\r\n#define FLUVIO_PLUGIN_DECL_6
+    FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_6) fluvio_PluginData6\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_7\r\n#undef FLUVIO_PLUGIN_DECL_7\r\n#define FLUVIO_PLUGIN_DECL_7
+    FLUVIO_BUFFER_RW(FLUVIO_PLUGIN_DATA_RW_7) fluvio_PluginData7\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_8\r\n#undef FLUVIO_PLUGIN_DECL_8\r\n#define FLUVIO_PLUGIN_DECL_8
+    FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_RW_8) fluvio_PluginData8\r\n#endif\r\n#ifdef
+    FLUVIO_PLUGIN_DATA_RW_9\r\n#undef FLUVIO_PLUGIN_DECL_9\r\n#define FLUVIO_PLUGIN_DECL_9
+    FLUVIO_BUFFER(FLUVIO_PLUGIN_DATA_RW_9) fluvio_PluginData9\r\n#endif\r\n#endif\r\nint
+    fluvio_FluidCount;\r\nint fluvio_ParticleCount;\r\nint fluvio_DynamicParticleCount;\r\nint
+    fluvio_Stride;\r\nfloat4 fluvio_KernelSize;\r\nfloat4 fluvio_KernelFactors;\r\nfloat4
+    fluvio_Time;\r\nFLUVIO_BUFFER(FluidData) fluvio_Fluid;\r\nFLUVIO_BUFFER(int) fluvio_FluidID;\r\nFLUVIO_BUFFER(int)
+    fluvio_ParticleID;\r\nFLUVIO_BUFFER(uint) fluvio_RandomSeed;\r\nFLUVIO_BUFFER_SOLVER_RW(float4)
+    fluvio_Position;\r\nFLUVIO_BUFFER_RW(float4) fluvio_Velocity;\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Force;\r\nFLUVIO_BUFFER_SOLVER_RW(float) fluvio_Density;\r\nFLUVIO_BUFFER_SOLVER_RW(float)
+    fluvio_Pressure;\r\nFLUVIO_BUFFER_SOLVER_RW(float4) fluvio_Normal;\r\nFLUVIO_BUFFER_SOLVER_RW(float)
+    fluvio_NormalLen;\r\nFLUVIO_BUFFER_RW(float) fluvio_Turbulence;\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Vorticity;\r\nFLUVIO_BUFFER_RW(float) fluvio_Lifetime;\r\nFLUVIO_BUFFER_RW(float4)
+    fluvio_Color;\r\nFLUVIO_BUFFER_SOLVER_RW(int) fluvio_NeighborCount;\r\nFLUVIO_BUFFER_SOLVER_RW(int)
+    fluvio_Neighbors;\r\nFLUVIO_BUFFER_SOLVER_RW(int) fluvio_IndexGrid;\r\nint fluvio_IndexGridDepth;\r\n#ifdef
+    FLUVIO_PLUGIN\r\nint fluvio_IncludeFluidGroup;\r\nint fluvio_PluginFluidID;\r\nFLUVIO_PLUGIN_DECL_0;\r\nFLUVIO_PLUGIN_DECL_1;\r\nFLUVIO_PLUGIN_DECL_2;\r\nFLUVIO_PLUGIN_DECL_3;\r\nFLUVIO_PLUGIN_DECL_4;\r\nFLUVIO_PLUGIN_DECL_5;\r\nFLUVIO_PLUGIN_DECL_6;\r\nFLUVIO_PLUGIN_DECL_7;\r\nFLUVIO_PLUGIN_DECL_8;\r\nFLUVIO_PLUGIN_DECL_9;\r\n#endif\r\n#define
+    FLUVIO_KERNEL(kernelName) \\\r\n[numthreads(FLUVIO_THREAD_GROUP_SIZE,1,1)]\\\r\nvoid
+    kernelName(int3 fluvio_DispatchThreadID : SV_DispatchThreadID)\r\n#define FLUVIO_KERNEL_INDEX_GRID(kernelName)
+    FLUVIO_KERNEL(kernelName)\r\n#endif\r\n#define FluvioGetPluginBuffer(index) fluvio_PluginData##index\r\n#define
+    FluvioGetPluginValue(index) fluvio_PluginData##index[0]\r\n#ifdef FLUVIO_API_UNITYNATIVE\r\n#define
+    get_global_id(i) fluvio_DispatchThreadID[(i)]\r\n#endif\r\n#define EachNeighbor(particleIndex,
+    neighborIndex) int fluvio_neighborIndexP = particleIndex*fluvio_Stride, neighborIndex
+    = fluvio_Neighbors[fluvio_neighborIndexP]; fluvio_neighborIndexP < particleIndex*fluvio_Stride
+    + fluvio_NeighborCount[particleIndex]; ++fluvio_neighborIndexP, neighborIndex
+    = fluvio_Neighbors[fluvio_neighborIndexP]\r\n#define FluvioParticleIsAlive(particleIndex)
+    (fluvio_Lifetime[(particleIndex)] >= 0 && (particleIndex) < fluvio_DynamicParticleCount)\r\n#define
+    FluvioShouldUpdatePlugin(particleIndex) ((particleIndex) < fluvio_DynamicParticleCount
+    && FluvioParticleIsAlive((particleIndex)) && particleIndex < fluvio_DynamicParticleCount
+    && (fluvio_IncludeFluidGroup == 1 || fluvio_PluginFluidID == fluvio_FluidID[(particleIndex)]))\r\n#define
+    FluvioShouldUpdatePluginNeighbor(neighborIndex) (FluvioParticleIsAlive((neighborIndex))
+    && (fluvio_IncludeFluidGroup == 1 || fluvio_PluginFluidID == fluvio_FluidID[(neighborIndex)]))\r\ninline
+    int FluvioGetNeighborIndex(FLUVIO_BUFFER_SOLVER_RW(int) neighbors, int particleIndex,
+    int stride, int offset)\r\n{\r\nreturn neighbors[particleIndex * stride + offset];\r\n}\r\n#define
+    FluvioPositive(x) 0.5f*(x + max(x,-x))\r\n#define FluvioRenorm(x, upper, lower)
+    1.0f-FluvioPositive(1.0f-FluvioPositive((x-lower)/(upper-lower)))\r\ninline float
+    FluvioRenormBranch(float x, float y, float a, float b)\r\n{\r\nreturn lerp(b,
+    a, FluvioRenorm(x, y + 0.001f, y - 0.001f));\r\n}\r\ninline float3 clamp_len(float3
+    v, float len)\r\n{\r\nreturn (dot(v, v) > (len * len)) ? (normalize(v) * len)
+    : v;\r\n}\r\ninline float invlerp(float from, float to, float value)\r\n{\r\nif
+    (from < to)\r\n{\r\nif (value < from)\r\nreturn 0.0f;\r\nif (value > to)\r\nreturn
+    1.0f;\r\nvalue -= from;\r\nvalue /= to - from;\r\nreturn value;\r\n}\r\nelse\r\n{\r\nif
+    (from <= to)\r\nreturn 0.0f;\r\nif (value < to)\r\nreturn 1.0f;\r\nif (value >
+    from)\r\nreturn 0.0f;\r\nelse\r\nreturn 1.0 - (value - to) / (from - to);\r\n}\r\n}\r\ninline
+    uint WangHash(uint seed)\r\n{\r\nseed = (seed ^ 61) ^ (seed >> 16);\r\nseed *=
+    9;\r\nseed = seed ^ (seed >> 4);\r\nseed *= 0x27d4eb2d;\r\nseed = seed ^ (seed
+    >> 15);\r\nreturn seed;\r\n}\r\ninline float RandomFloat(uint seed)\r\n{\r\nfloat
+    f = (float)WangHash(seed);\r\nreturn f * (1.0f / 4294967295.0f);\r\n}\r\ninline
+    float DoEvaluateCurve(float t, Keyframe keyframe0, Keyframe keyframe1)\r\n{\r\nfloat
+    dt = keyframe1.time - keyframe0.time;\r\nfloat m0 = keyframe0.outTangent * dt;\r\nfloat
+    m1 = keyframe1.inTangent * dt;\r\nfloat t2 = t * t;\r\nfloat t3 = t2 * t;\r\nfloat
+    a = 2 * t3 - 3 * t2 + 1;\r\nfloat b = t3 - 2 * t2 + t;\r\nfloat c = t3 - t2;\r\nfloat
+    d = -2 * t3 + 3 * t2;\r\nreturn a * keyframe0.value + b * m0 + c * m1 + d * keyframe1.value;\r\n}\r\ninline
+    float EvaluateCurve(FLUVIO_BUFFER(Keyframe) curve, int startIndex, int endIndex,
+    float time)\r\n{\r\nKeyframe start, end;\r\nfor(int i = startIndex; i < endIndex;
+    ++i)\r\n{\r\nstart = curve[i];\r\nend = curve[i+1];\r\nif (time < end.time)\r\nbreak;\r\n}\r\nfloat
+    t = invlerp(start.time, end.time, time);\r\nreturn DoEvaluateCurve(t, start, end);\r\n}\r\ninline
+    float EvaluateMinMaxCurve(FLUVIO_BUFFER(Keyframe) curve, float time, uint seed)\r\n{\r\nKeyframe
+    curveInfo = curve[0];\r\nint maxCurveStartIndex = 1;\r\nint maxCurveEndIndex =
+    (int)curveInfo.time;\r\nint minCurveStartIndex = (int)curveInfo.value;\r\nint
+    minCurveEndIndex = curveInfo.inTangent;\r\nfloat scalar = curveInfo.outTangent;\r\nfloat
+    maxCurve = EvaluateCurve(curve, maxCurveStartIndex, maxCurveEndIndex, time);\r\nfloat
+    minCurve = EvaluateCurve(curve, minCurveStartIndex, minCurveEndIndex, time);\r\nreturn
+    scalar * lerp(minCurve, maxCurve, RandomFloat(seed));\r\n}\r\ninline float4 DoEvaluateGradient(float
+    cT, float aT, GradientColorKey colorKey0, GradientColorKey colorKey1, GradientAlphaKey
+    alphaKey0, GradientAlphaKey alphaKey1)\r\n{\r\nfloat3 col0 = FLUVIO_INITIALIZE(float3);\r\nfloat3
+    col1 = FLUVIO_INITIALIZE(float3);\r\ncol0.x = colorKey0.cR;\r\ncol0.y = colorKey0.cG;\r\ncol0.z
+    = colorKey0.cB;\r\ncol1.x = colorKey1.cR;\r\ncol1.y = colorKey1.cG;\r\ncol1.z
+    = colorKey1.cB;\r\nfloat4 c = FLUVIO_INITIALIZE(float4);\r\nc.xyz = lerp3(col0,
+    col1, cT);\r\nc.w = lerp(alphaKey0.alpha, alphaKey1.alpha, aT);\r\nreturn c;\r\n}\r\ninline
+    float4 EvaluateGradient(FLUVIO_BUFFER(GradientColorKey) colorKeys, FLUVIO_BUFFER(GradientAlphaKey)
+    alphaKeys, int colorKeyStartIndex, int colorKeyEndIndex, int alphaKeyStartIndex,
+    int alphaKeyEndIndex, float time)\r\n{\r\nGradientColorKey startColor, endColor;\r\nGradientAlphaKey
+    startAlpha, endAlpha;\r\nfor(int i = colorKeyStartIndex; i < colorKeyEndIndex;
+    ++i)\r\n{\r\nstartColor = colorKeys[i];\r\nendColor = colorKeys[i+1];\r\nif (time
+    < endColor.time)\r\nbreak;\r\n}\r\nif (alphaKeyEndIndex - alphaKeyStartIndex ==
+    1)\r\n{\r\nstartAlpha = alphaKeys[alphaKeyStartIndex];\r\nendAlpha = alphaKeys[alphaKeyStartIndex+1];\r\n}\r\nelse\r\n{\r\nfor(int
+    j = alphaKeyStartIndex; j < alphaKeyEndIndex; ++j)\r\n{\r\nstartAlpha = alphaKeys[j];\r\nendAlpha
+    = alphaKeys[j+1];\r\nif (time < endAlpha.time)\r\nbreak;\r\n}\r\n}\r\nfloat cT
+    = invlerp(startColor.time, endColor.time, time);\r\nfloat aT = invlerp(startAlpha.time,
+    endAlpha.time, time);\r\nreturn DoEvaluateGradient(cT, aT, startColor, endColor,
+    startAlpha, endAlpha);\r\n}\r\ninline float4 EvaluateMinMaxGradient(FLUVIO_BUFFER(GradientColorKey)
+    colorKeys, FLUVIO_BUFFER(GradientAlphaKey) alphaKeys, float time, uint seed)\r\n{\r\nGradientColorKey
+    colorInfo = colorKeys[0];\r\nGradientAlphaKey alphaInfo = alphaKeys[0];\r\nint
+    maxColorKeyStartIndex = 1;\r\nint maxColorKeyEndIndex = colorInfo.cR;\r\nint minColorKeyStartIndex
+    = colorInfo.cG;\r\nint minColorKeyEndIndex = colorInfo.cB;\r\nint maxAlphaKeyStartIndex
+    = 1;\r\nint maxAlphaKeyEndIndex = colorInfo.cA;\r\nint minAlphaKeyStartIndex =
+    colorInfo.time;\r\nint minAlphaKeyEndIndex = alphaInfo.alpha;\r\nfloat4 maxGradient
+    = EvaluateGradient(colorKeys, alphaKeys, maxColorKeyStartIndex, maxColorKeyEndIndex,
+    maxAlphaKeyStartIndex, maxAlphaKeyEndIndex, time);\r\nfloat4 minGradient = EvaluateGradient(colorKeys,
+    alphaKeys, minColorKeyStartIndex, minColorKeyEndIndex, minAlphaKeyStartIndex,
+    minAlphaKeyEndIndex, time);\r\nreturn lerp4(minGradient, maxGradient, RandomFloat(seed));\r\n}\r\n#define
+    solverData_AddForce(particleIndex, forceAmount, forceMode) \\\r\n{ \\\r\nfloat
+    deltaTime = fluvio_Time.x; \\\r\nswitch ((forceMode)) \\\r\n{ \\\r\ncase FLUVIO_FORCE_MODE_FORCE:
+    \\\r\nfluvio_Force[(particleIndex)] += (forceAmount); \\\r\nbreak; \\\r\ncase
+    FLUVIO_FORCE_MODE_ACCELERATION: \\\r\nfluvio_Force[(particleIndex)] += (forceAmount)
+    * (1.0f / fluvio_Fluid[fluvio_FluidID[(particleIndex)]].particleMass); \\\r\nbreak;
+    \\\r\ncase FLUVIO_FORCE_MODE_IMPULSE: \\\r\nfluvio_Force[(particleIndex)] += (forceAmount)
+    / deltaTime; \\\r\nbreak; \\\r\ncase FLUVIO_FORCE_MODE_VELOCITY_CHANGE: \\\r\nfluvio_Force[(particleIndex)]
+    += ((forceAmount) * (1.0f / fluvio_Fluid[fluvio_FluidID[(particleIndex)]].particleMass))
+    / deltaTime; \\\r\nbreak; \\\r\n} \\\r\n}\r\n#define solverData_GetColor(particleIndex)
+    (fluvio_Color[(particleIndex)])\r\n#define solverData_GetFluid(particleIndex)
+    (fluvio_Fluid[fluvio_FluidID[(particleIndex)]])\r\n#define solverData_GetFluidID(particleIndex)
+    (fluvio_FluidID[(particleIndex)])\r\n#define solverData_GetDensity(particleIndex)
+    (fluvio_Density[(particleIndex)])\r\n#define solverData_GetForce(particleIndex)
+    (fluvio_Force[(particleIndex)])\r\n#define solverData_GetMass(particleIndex) (fluvio_Fluid[fluvio_FluidID[(particleIndex)]].particleMass)\r\n#define
+    solverData_GetLifetime(particleIndex) (fluvio_Lifetime[(particleIndex)])\r\n#define
+    solverData_GetPosition(particleIndex) fluvio_Position[(particleIndex)]\r\n#define
+    solverData_GetPressure(particleIndex) (fluvio_Pressure[(particleIndex)])\r\n#define
+    solverData_GetRandomSeed(particleIndex) (fluvio_RandomSeed[(particleIndex)])\r\n#define
+    solverData_GetSize(particleIndex) (fluvio_Velocity[(particleIndex)].w)\r\n#define
+    solverData_GetSurfaceNormal(particleIndex) (fluvio_Normal[(particleIndex)])\r\n#define
+    solverData_GetSurfaceNormalLength(particleIndex) (fluvio_NormalLen[(particleIndex)])\r\n#define
+    solverData_GetTurbulence(particleIndex) (fluvio_Turbulence[(particleIndex)])\r\n#define
+    solverData_GetVelocity(particleIndex) (fluvio_Velocity[(particleIndex)])\r\n#define
+    solverData_GetVorticity(particleIndex) (fluvio_Vorticity[(particleIndex)])\r\n#define
+    solverData_SetColor(particleIndex, color) (fluvio_Color[(particleIndex)] = (color))\r\n#define
+    solverData_SetForce(particleIndex, force) (fluvio_Force[(particleIndex)] = (force))\r\n#define
+    solverData_SetLifetime(particleIndex, lifetime) (fluvio_Lifetime[(particleIndex)]
+    = (lifetime))\r\n#define solverData_SetSize(particleIndex, size) (fluvio_Velocity[(particleIndex)].w
+    = (size))\r\n#define solverData_SetTurbulence(particleIndex, turbulence) (fluvio_Turbulence[(particleIndex)]
+    = (turbulence))\r\n#define solverData_SetVorticity(particleIndex, vorticity) (fluvio_Vorticity[(particleIndex)]
+    = (vorticity))\r\n#endif\r\n\r\nFLUVIO_KERNEL(OnUpdatePlugin)\r\n{\r\nint particleIndex
+    = get_global_id(0);\r\nif (FluvioShouldUpdatePlugin(particleIndex))\r\n{\r\nFLUVIO_BUFFER(Keyframe)
+    acceleration = FluvioGetPluginBuffer(0);\r\nfloat radius = FluvioGetPluginValue(1);\r\nint
+    touchPointsCount = FluvioGetPluginValue(2);\r\nFLUVIO_BUFFER(float4) touchPoints
+    = FluvioGetPluginBuffer(3);\r\nuint seed = solverData_GetRandomSeed(particleIndex);\r\nfor(int
+    i = 0, l = touchPointsCount; i < l; ++i)\r\n{\r\nfloat4 pt = touchPoints[i];\r\nfloat4
+    worldPosition = solverData_GetPosition(particleIndex);\r\nfloat4 d = pt - worldPosition;\r\nfloat
+    len = length(d);\r\nif (len < radius)\r\nsolverData_AddForce(particleIndex, (d
+    / len) * EvaluateMinMaxCurve(acceleration, len / radius, seed), FLUVIO_FORCE_MODE_ACCELERATION);\r\n}\r\n}\r\n}\r\n"
