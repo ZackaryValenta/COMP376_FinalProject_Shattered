@@ -4,9 +4,6 @@ using System.Collections;
 
 public class OpenningImage : MonoBehaviour
 {
-	[SerializeField]
-	Camera mainCamera;
-
 	private Image image;
 	private float textureWidthHeightRatio;
 

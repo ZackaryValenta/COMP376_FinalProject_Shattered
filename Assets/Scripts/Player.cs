@@ -231,6 +231,11 @@ public class Player : MonoBehaviour
 		isDead = b;
 	}
 
+	public float getSpeed()
+	{
+		return moveSpeed;
+	}
+
 	public void setDoubleJumpUnlocked(bool b)
 	{
 		isDoubleJumpUnlocked = b;
