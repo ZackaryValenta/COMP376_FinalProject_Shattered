@@ -226,6 +226,21 @@ public class Player : MonoBehaviour
 		return isKicking;
 	}
 
+	public void setIsDead(bool b)
+	{
+		isDead = b;
+	}
+
+	public void setDoubleJumpUnlocked(bool b)
+	{
+		isDoubleJumpUnlocked = b;
+	}
+
+	public void setSpinKickUnlocked(bool b)
+	{
+		isSpinKickUnlocked = b;
+	}
+
 	public void playDeathSound()
 	{
 		takeDamageSound.Play ();
