@@ -1,3 +1,0 @@
-#pragma kernel OnUpdatePlugin
-#pragma builtin
-#include "ComputeShader.cginc"
