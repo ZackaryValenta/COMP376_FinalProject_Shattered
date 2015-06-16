@@ -310,11 +310,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1864272539}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .745494783, y: .347768992}
-  m_AnchorMax: {x: .745494783, y: .347768992}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_Father: {fileID: 1521395299}
+  m_RootOrder: 2
+  m_AnchorMin: {x: .904485404, y: .347805083}
+  m_AnchorMax: {x: .904485404, y: .347805083}
+  m_AnchoredPosition: {x: -224, y: 0}
   m_SizeDelta: {x: 500, y: 120}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1187928848
@@ -444,6 +444,7 @@ RectTransform:
   m_Children:
   - {fileID: 1864272539}
   - {fileID: 1569948054}
+  - {fileID: 1187928847}
   m_Father: {fileID: 1597950190}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -589,9 +590,9 @@ RectTransform:
   - {fileID: 1424560820}
   m_Father: {fileID: 1521395299}
   m_RootOrder: 1
-  m_AnchorMin: {x: .747000039, y: .143752947}
-  m_AnchorMax: {x: .747000039, y: .143752947}
-  m_AnchoredPosition: {x: -2, y: -9}
+  m_AnchorMin: {x: .704285562, y: .149220213}
+  m_AnchorMax: {x: .704285562, y: .149220213}
+  m_AnchoredPosition: {x: 0, y: -0}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1597950189
@@ -694,6 +695,7 @@ GameObject:
   - 224: {fileID: 1864272539}
   - 222: {fileID: 1864272541}
   - 114: {fileID: 1864272540}
+  - 114: {fileID: 1864272542}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -709,15 +711,14 @@ RectTransform:
   m_GameObject: {fileID: 1864272538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .745689034, y: .745688915, z: .745688915}
-  m_Children:
-  - {fileID: 1187928847}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 1521395299}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1338, y: 619}
+  m_AnchoredPosition: {x: .5, y: .5}
+  m_SizeDelta: {x: 1141, y: 574}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1864272540
 MonoBehaviour:
@@ -746,3 +747,15 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1864272538}
+--- !u!114 &1864272542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1864272538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffeed17167ea3fa4b886141489737b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 609141342}
