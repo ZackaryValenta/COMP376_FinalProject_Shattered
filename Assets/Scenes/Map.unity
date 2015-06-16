@@ -29002,10 +29002,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1439772720}
-  smooth: 5
-  velocity: {x: 0, y: 0, z: 0}
-  hortizontalBufferPercentage: .25
-  verticalBufferPercentage: .25
+  usePlayerSpeed: 0
+  cameraSpeed: 25
+  hortizontalBufferPercentage: .300000012
+  verticalBufferPercentage: .300000012
 --- !u!114 &1975338638
 MonoBehaviour:
   m_ObjectHideFlags: 0
