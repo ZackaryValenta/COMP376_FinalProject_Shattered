@@ -246,6 +246,11 @@ public class Player : MonoBehaviour
 		takeDamageSound.Play ();
 	}
 
+	public bool isGrounded()
+	{
+		return grounded;
+	}
+
 	public void setCurrentCheckpoint(Checkpoint newCheckpoint)
 	{
 		currentCheckpoint.close ();
