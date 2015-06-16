@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GeneralCommands : MonoBehaviour
 {
+	[SerializeField]
+	Player player;
 
 	// Use this for initialization
 	void Start ()
@@ -15,7 +17,7 @@ public class GeneralCommands : MonoBehaviour
 	{
 		if (Input.GetKeyDown (KeyCode.Escape)) 
 		{
-			Application.LoadLevel(1);
+			player.setIsDead (true);
 		}
 	}
 }

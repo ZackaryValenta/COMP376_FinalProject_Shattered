@@ -22495,6 +22495,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 405410, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
   m_PrefabInternal: {fileID: 1439772719}
+--- !u!114 &1439772721 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11436636, guid: ae4e1c1835da55d419970ccd040b4441,
+    type: 2}
+  m_PrefabInternal: {fileID: 1439772719}
+  m_Script: {fileID: 11500000, guid: 0561d2307772e0e41b48ca63b2aa0ec1, type: 3}
 --- !u!1001 &1446836308
 Prefab:
   m_ObjectHideFlags: 0
@@ -29002,8 +29008,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1439772720}
-  usePlayerSpeed: 0
+  usePlayerSpeed: 1
   cameraSpeed: 25
+  distantSpeedMultiplier: 4
+  multiplyDistance: 50
   hortizontalBufferPercentage: .300000012
   verticalBufferPercentage: .300000012
 --- !u!114 &1975338638
@@ -29017,6 +29025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae3b6c2a92de8a49823955a964131de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1439772721}
 --- !u!114 &1975338639
 MonoBehaviour:
   m_ObjectHideFlags: 0
