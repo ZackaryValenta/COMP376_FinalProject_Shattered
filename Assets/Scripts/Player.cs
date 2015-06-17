@@ -339,4 +339,5 @@ public class Player : MonoBehaviour
 	void OnCollisionExit2D(Collision2D col)
 	{
 	}
+
 }
