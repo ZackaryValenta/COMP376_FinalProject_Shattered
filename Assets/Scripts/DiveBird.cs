@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DiveBird : MonoBehaviour{
+public class DiveBird : MonoBehaviour
 {
 	[SerializeField]
 	float speed;

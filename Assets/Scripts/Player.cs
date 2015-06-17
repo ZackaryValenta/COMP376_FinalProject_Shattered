@@ -74,7 +74,8 @@ public class Player : MonoBehaviour
 		currentFallTime = 0.0f;
 
 		grounded             = true;
-		isDoubleJumpUnlocked = false;
+		//isDoubleJumpUnlocked = false;
+		isDoubleJumpUnlocked = true;
 		isSpinKickUnlocked   = false;
 		allowDoubleJump      = true;
 		isKicking            = false;
