@@ -151,7 +151,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23, y: 12, z: 20}
+  m_LocalPosition: {x: .400000006, y: -6.9000001, z: 20}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 414670}
@@ -389,7 +389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossGameObject: {fileID: 184088}
-  groundTag: Ground
 --- !u!114 &11451874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -402,6 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossGameObject: {fileID: 184088}
+  SawDamage: 100
 --- !u!114 &11462386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -428,17 +428,18 @@ MonoBehaviour:
   moveBossGameObject: {fileID: 184088}
   playerCoordinates: {fileID: 0}
   sawHandle: {fileID: 142890}
-  swingVelocity: 90
+  swingVelocity: 150
   slamDropHeight: 40
   slamUpSpeed: 30
   slamDropSpeed: 70
-  WaitTimeBeforeAttacks: 1
+  WaitTimeBeforeAttacks: 4
   WaitTimeBeforeShockOver: 3
+  WaitTimeForDizzy: 5
   SawCanCut: 0
   slamShockTime: 5
   SlammingDown: 0
   Vulnerable: 0
-  life: 3
+  life: 6
 --- !u!114 &11479284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -451,7 +452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossGameObject: {fileID: 184088}
-  groundTag: Ground
+  groundTag: ground
+  SlamDamage: 100
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

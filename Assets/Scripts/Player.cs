@@ -367,6 +367,12 @@ public class Player : MonoBehaviour
 	{
 		return maxHealth;
 	}
+
+    public void ForcedStun(float force)
+    {
+        rigidBody2D.AddForce(Vector2.up * force, ForceMode2D.Impulse);        
+    }
+
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.CompareTag("Enemy") && !isKicking && !isSpinKicking)

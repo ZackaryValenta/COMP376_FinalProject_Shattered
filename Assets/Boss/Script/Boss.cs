@@ -14,6 +14,8 @@ public class Boss : MonoBehaviour
     [SerializeField] private float slamDropSpeed = 40;
     [SerializeField] private float WaitTimeBeforeAttacks = 8;
     [SerializeField] private float WaitTimeBeforeShockOver = 3;
+    [SerializeField] private float WaitTimeForDizzy = 5;
+
 
     private Animator _animator;
     private Rigidbody2D _rigidBody;
@@ -40,6 +42,7 @@ public class Boss : MonoBehaviour
     public int life = 3;
     private const int MaxLives = 3;
 
+    private Player playerScript;
 
     private bool moving = false;
     private bool dying = false;
@@ -77,8 +80,9 @@ public class Boss : MonoBehaviour
         _animator = GetComponent<Animator>();
         _animator.SetBool("Moving", true);
         _rigidBody = moveBossGameObject.GetComponent<Rigidbody2D>();
-        //_playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         cameraShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
     }
 
     private IEnumerator CreateAttacks()
@@ -119,6 +123,7 @@ public class Boss : MonoBehaviour
             GameOver();
             return;
         }
+
 
         if (currentState == ActionState.GettingReadyToAttack)
             MoveToAttack(GetLocationToAttack());    //Change to Constant Location
@@ -161,8 +166,6 @@ public class Boss : MonoBehaviour
 
     private void MoveBackToNormal()
     {
-        Debug.Log("Calling too much");
-
         positionNotchanging = moveBossGameObject.transform.position;
         moveBossGameObject.transform.position = Vector3.SmoothDamp(moveBossGameObject.transform.position, trailPosition, ref velocity, 0.3f);
         if (moveBossGameObject.transform.position == trailPosition || moveBossGameObject.transform.position == positionNotchanging)
@@ -231,7 +234,7 @@ public class Boss : MonoBehaviour
             _rigidBody.velocity = Vector3.zero;
             slammingAction = false;
             cameraShake.ShakeFor(slamShockTime);
-            //TODO if player grounded should impulse pushed a bit higher, enough to freeze him for a second
+            playerScript.ForcedStun(25);
         }
     }
 
@@ -241,10 +244,17 @@ public class Boss : MonoBehaviour
         currentState = ActionState.GettingReadyToIdle;
     }
 
+    public void Dizzy()
+    {
+        Debug.Log("Dizzy");
+        //TODO Disable Boss and Dizzy for a moment.
+    }
+
 
     public void TakeDamge()
     {
         life--;
+        //playerScript.ForcedStun(25);
         //TODO sounds and whatever else when taking damage.
     }
 }

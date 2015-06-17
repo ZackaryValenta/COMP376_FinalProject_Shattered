@@ -2104,9 +2104,9 @@ GameObject:
   - 212: {fileID: 671260073}
   - 61: {fileID: 671260072}
   - 114: {fileID: 671260071}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flash
-  m_TagString: Untagged
+  m_TagString: BossBoxBolt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2472,6 +2472,10 @@ Prefab:
     - target: {fileID: 405410, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000568, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
+      propertyPath: m_GravityScale
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
@@ -4065,7 +4069,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436228, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
       propertyPath: playerCoordinates
@@ -5208,6 +5212,7 @@ GameObject:
   - 124: {fileID: 1912709891}
   - 81: {fileID: 1912709890}
   - 82: {fileID: 1912709895}
+  - 114: {fileID: 1912709896}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5349,6 +5354,19 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1912709896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1912709889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d37267459f94e478ccdc72eb25cdf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decreaseRate: 5
+  magnitude: .699999988
 --- !u!1 &1930916542
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,8 +16,7 @@ public class BoltBox : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Slamming down: " + bossScript.SlammingDown);
-        if (other.tag == "Boss" && (bossScript.SlammingDown || bossScript.SlammingDown /*cutting*/))
+        if (other.tag == "Boss" && (bossScript.SlammingDown || bossScript.SawCanCut))
         {
             Instantiate(boltExplosion, transform.position, Quaternion.identity);
             bossScript.Revivers--;

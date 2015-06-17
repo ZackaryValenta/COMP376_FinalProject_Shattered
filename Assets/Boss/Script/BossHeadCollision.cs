@@ -4,8 +4,7 @@ using System.Collections;
 public class BossHeadCollision : MonoBehaviour
 {
     [SerializeField] private GameObject bossGameObject;
-    [SerializeField] private string groundTag;
-
+    
     private Boss bossScript;
 
     void Start()
@@ -15,7 +14,7 @@ public class BossHeadCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" && bossScript.Vulnerable)
+        if (other.tag == "Player")
             bossScript.TakeDamge();
     }
 }
