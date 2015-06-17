@@ -17,7 +17,13 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	float fallDamage;
 	[SerializeField]
-	float jumpForce;
+	float jumpUpForce;
+	[SerializeField]
+	float jumpMomentumForce;
+	[SerializeField]
+	float jumpDownForce;
+	[SerializeField]
+	float damagePushForce;
 	[SerializeField]
 	LayerMask whatIsGround;
 	[SerializeField]
@@ -45,9 +51,9 @@ public class Player : MonoBehaviour
 	// control variables
 	bool allowDoubleJump;				// tracks if player can double jump (is false if they have already jumped twice)
 	float groundCheckRadius = 0.5f;
-	float damagePushForce = 2.5f;
 	Vector2 facingDirection;
 	float currentFallTime;
+	bool hasJumped;						// used for downward force added when player starts falling
 
 	// component references
 	Animator animator;
@@ -73,6 +79,8 @@ public class Player : MonoBehaviour
 		allowDoubleJump      = true;
 		isKicking            = false;
 		isSpinKicking        = false;
+		invincible           = false;
+		hasJumped            = false;
 
 		animator        = GetComponent<Animator>();
 		rigidBody2D     = GetComponent<Rigidbody2D>();
@@ -119,6 +127,7 @@ public class Player : MonoBehaviour
 					currentHealth -= fallDamage;
 				}
 				currentFallTime = 0.0f;
+				hasJumped = false;		// in case player jumped and didn't fall before becoming grounded again
 			}
 			grounded = justGrounded;
 			
@@ -136,6 +145,12 @@ public class Player : MonoBehaviour
 			// add to current fall time
 			if (!grounded && !rising)
 			{
+				// if just started falling and has jumped since was last grounded
+				if (Mathf.Approximately(currentFallTime, 0.0f) && hasJumped)
+				{
+					rigidBody2D.AddForce(-Vector2.up * jumpDownForce, ForceMode2D.Impulse);
+					hasJumped = false;
+				}
 				currentFallTime += Time.deltaTime;
 			}
 			
@@ -202,7 +217,12 @@ public class Player : MonoBehaviour
 				allowDoubleJump = false;
 			}
 			jumpSound.Play ();
-			rigidBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+			rigidBody2D.AddForce(Vector2.up * jumpUpForce, ForceMode2D.Impulse);
+			if (running)
+			{
+				rigidBody2D.AddForce(facingDirection * jumpMomentumForce, ForceMode2D.Impulse);
+			}
+			hasJumped = true;
 		}
 	}
 
@@ -234,6 +254,11 @@ public class Player : MonoBehaviour
 	public float getSpeed()
 	{
 		return moveSpeed;
+	}
+	
+	public float getUngroundedSpeed()
+	{
+		return ungroundedMoveSpeed;
 	}
 
 	public void setDoubleJumpUnlocked(bool b)
@@ -278,14 +303,15 @@ public class Player : MonoBehaviour
 		}
 	}
 	
-	public void TakeDamage(int dmg)
+	public void TakeDamage(float dmg)
 	{
 		if(!invincible)
 		{
+			currentHealth         -= dmg;
+			invincible             = true;
+			rigidBody2D.velocity   = Vector2.zero;
 			Vector2 forceDirection = new Vector2(-facingDirection.x, 1.0f) * damagePushForce;
-			rigidBody2D.velocity = Vector2.zero;
 			rigidBody2D.AddForce(forceDirection, ForceMode2D.Impulse);
-			invincible = true;
 			takeDamageSound.Play ();
 		}
 	}
@@ -321,7 +347,7 @@ public class Player : MonoBehaviour
 		}
 		return false;
 	}
-	
+
 	private void UpdateAnimator()
 	{
 		animator.SetBool ("isRunning", running);
@@ -330,6 +356,14 @@ public class Player : MonoBehaviour
 		animator.SetBool ("isDead", isDead);
 		animator.SetBool ("isKicking", isKicking);
 		animator.SetBool ("isSpinKicking", isSpinKicking);
+	}
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.CompareTag("Enemy"))
+		{
+			TakeDamage(col.gameObject.GetComponent<EnemyDamage> ().getDamage ());
+		}
 	}
 	
 	void OnCollisionEnter2D(Collision2D col)

@@ -12,7 +12,7 @@ public class CameraMovement : MonoBehaviour
 	[SerializeField] private float hortizontalBufferPercentage;		// 
 	[SerializeField] private float verticalBufferPercentage;
 
-	Camera camera;
+	public Camera camera;
 
     void Start()
     {
@@ -21,7 +21,12 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-		float speed = (usePlayerSpeed) ? target.gameObject.GetComponent<Player> ().getSpeed() : cameraSpeed;
+		float speed = cameraSpeed;
+		if (usePlayerSpeed)
+		{
+			speed = (target.gameObject.GetComponent<Player> ().isGrounded ()) ? target.gameObject.GetComponent<Player> ().getSpeed() :
+																				target.gameObject.GetComponent<Player> ().getUngroundedSpeed ();
+		}
 
 		if (Mathf.Abs (Vector3.Magnitude (target.position - transform.position)) > multiplyDistance)
 		{
