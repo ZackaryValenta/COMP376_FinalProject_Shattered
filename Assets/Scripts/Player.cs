@@ -358,6 +358,15 @@ public class Player : MonoBehaviour
 		animator.SetBool ("isSpinKicking", isSpinKicking);
 	}
 
+	public float getCurrentHealth()
+	{
+		return currentHealth;
+	}
+
+	public float getMaxHealth()
+	{
+		return maxHealth;
+	}
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.CompareTag("Enemy") && !isKicking && !isSpinKicking)
