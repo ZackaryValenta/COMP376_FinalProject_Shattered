@@ -415,6 +415,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 646742891}
+  - 114: {fileID: 646742892}
   m_Layer: 0
   m_Name: EnemyDiveBird
   m_TagString: Untagged
@@ -435,6 +436,17 @@ Transform:
   - {fileID: 834601084}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &646742892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 646742890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd74dba6b54677f40beed320dcc831f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &703861494
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,8 +610,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 834601084}
   - 212: {fileID: 834601083}
-  - 114: {fileID: 834601082}
   - 61: {fileID: 834601081}
+  - 114: {fileID: 834601082}
+  - 95: {fileID: 834601085}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -670,6 +683,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 646742891}
   m_RootOrder: 0
+--- !u!95 &834601085
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 834601080}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16de282fc97b3dc43af05ea4d0339825, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &963588818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1083,7 @@ MonoBehaviour:
   cameraSpeed: 0
   distantSpeedMultiplier: 4
   multiplyDistance: 50
-  hortizontalBufferPercentage: .200000003
+  hortizontalBufferPercentage: .300000012
   verticalBufferPercentage: .200000003
   camera: {fileID: 0}
 --- !u!114 &1302108583 stripped
