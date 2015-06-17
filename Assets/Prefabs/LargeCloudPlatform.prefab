@@ -26,6 +26,7 @@ GameObject:
   - 4: {fileID: 480284}
   - 212: {fileID: 21237912}
   - 60: {fileID: 6003296}
+  - 251: {fileID: 25188556}
   m_Layer: 8
   m_Name: LargeCloudPlatform
   m_TagString: Untagged
@@ -125,7 +126,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
@@ -249,6 +250,20 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 908c39927feda4b5e8f45ea76b592b99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!251 &25188556
+PlatformEffector2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182472}
+  m_Enabled: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseOneWay: 1
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideAngleVariance: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
