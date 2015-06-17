@@ -541,7 +541,7 @@ MonoBehaviour:
   moveSpeed: 30
   ungroundedMoveSpeed: 15
   maxFallTime: 1.5
-  fallDamage: 400
+  fallDamage: 200
   jumpUpForce: 30
   jumpMomentumForce: 5
   jumpDownForce: 7
