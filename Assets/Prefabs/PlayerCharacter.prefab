@@ -545,13 +545,13 @@ MonoBehaviour:
   jumpUpForce: 30
   jumpMomentumForce: 5
   jumpDownForce: 7
+  damagePushForce: 5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
   isDoubleJumpUnlocked: 0
   isSpinKickUnlocked: 0
   currentCheckpoint: {fileID: 0}
-  damagePushForce: 5
   isDead: 0
   isKicking: 0
 --- !u!114 &11449142
