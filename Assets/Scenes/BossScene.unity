@@ -264,7 +264,7 @@ GameObject:
   - 61: {fileID: 101731723}
   - 58: {fileID: 101731722}
   - 58: {fileID: 101731721}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 7
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -701,7 +701,7 @@ GameObject:
   - 61: {fileID: 381045332}
   - 58: {fileID: 381045331}
   - 58: {fileID: 381045330}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 16
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -907,7 +907,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 561539593}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1162,7 +1162,7 @@ GameObject:
   - 61: {fileID: 653941530}
   - 58: {fileID: 653941529}
   - 58: {fileID: 653941528}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 3
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -1304,7 +1304,7 @@ GameObject:
   - 61: {fileID: 682789357}
   - 58: {fileID: 682789356}
   - 58: {fileID: 682789355}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_right 2
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -1408,7 +1408,7 @@ GameObject:
   - 61: {fileID: 777024088}
   - 58: {fileID: 777024087}
   - 58: {fileID: 777024086}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_left 2
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -1867,7 +1867,7 @@ GameObject:
   - 61: {fileID: 1066392284}
   - 58: {fileID: 1066392283}
   - 58: {fileID: 1066392282}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 17
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -2229,7 +2229,7 @@ GameObject:
   - 61: {fileID: 1359259599}
   - 58: {fileID: 1359259598}
   - 58: {fileID: 1359259597}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 5
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -2325,7 +2325,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1371066252}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Long Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2418,7 +2418,7 @@ GameObject:
   - 61: {fileID: 1423487151}
   - 58: {fileID: 1423487150}
   - 58: {fileID: 1423487149}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 15
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -2518,7 +2518,7 @@ GameObject:
   - 61: {fileID: 1460042251}
   - 58: {fileID: 1460042250}
   - 58: {fileID: 1460042249}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 13
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -2884,7 +2884,7 @@ GameObject:
   - 61: {fileID: 1746994346}
   - 58: {fileID: 1746994345}
   - 58: {fileID: 1746994344}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 4
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -3039,7 +3039,7 @@ GameObject:
   - 61: {fileID: 1849390393}
   - 58: {fileID: 1849390392}
   - 58: {fileID: 1849390391}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 12
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -3498,7 +3498,7 @@ GameObject:
   - 212: {fileID: 1930916546}
   - 58: {fileID: 1930916545}
   - 114: {fileID: 1930916544}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3708,7 +3708,7 @@ GameObject:
   - 61: {fileID: 2032652003}
   - 58: {fileID: 2032652002}
   - 58: {fileID: 2032652001}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 2
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -3808,7 +3808,7 @@ GameObject:
   - 61: {fileID: 2066510291}
   - 58: {fileID: 2066510290}
   - 58: {fileID: 2066510289}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 14
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -3908,7 +3908,7 @@ GameObject:
   - 61: {fileID: 2092810101}
   - 58: {fileID: 2092810100}
   - 58: {fileID: 2092810099}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: platform1_middle 8
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -4059,7 +4059,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2113916740}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Long Platform Snow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
