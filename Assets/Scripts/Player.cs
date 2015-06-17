@@ -360,7 +360,7 @@ public class Player : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.CompareTag("Enemy"))
+		if (col.gameObject.CompareTag("Enemy") && !isKicking && !isSpinKicking)
 		{
 			TakeDamage(col.gameObject.GetComponent<EnemyDamage> ().getDamage ());
 		}
