@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CaveBlockingStone : MonoBehaviour
-{
+public class DestoryBurger : MonoBehaviour {
+
 	public GameObject explode;
 
 	// Use this for initialization
@@ -22,9 +22,9 @@ public class CaveBlockingStone : MonoBehaviour
 	
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.gameObject.CompareTag ("Player") &&
-			col.gameObject.GetComponent<Player> ().checkIfSpinKicking ())
+		if (col.gameObject.CompareTag ("Player"))
 		{
+			Debug.Log("heyyyyyyyyy");
 			Instantiate (explode, transform.position, transform.rotation);
 			Destroy (gameObject);
 		}
