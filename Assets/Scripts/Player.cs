@@ -54,9 +54,11 @@ public class Player : MonoBehaviour
 	Vector2 facingDirection;
 	float currentFallTime;
 	bool hasJumped;						// used for downward force added when player starts falling
+	bool deathSoundPlayed;				// so we don't play death sound more than once when transitioning to death state
 
 	// component references
 	Animator animator;
+	AnimatorStateInfo previousAnimatorBaseLayerStateInfo;
 	Rigidbody2D rigidBody2D;
 	List<GroundCheck> groundCheckList;
 	
@@ -166,6 +168,44 @@ public class Player : MonoBehaviour
 				}
 			}
 		}
+		
+		// **********************************************************************************************
+		// animation state reactions (0 means base layer in method parameters)
+		// done here instead of the animation events because they do not always trigger, so relying on them for
+		// anything more complex	than sounds or other non-critical events is not advised
+		// this method works if states are tagged, otherwise use (previousAnimatorBaseLayerStateInfo.shortNameHash == Animator.StringToHash("StateName"))
+		if (!animator.IsInTransition (0))
+		{
+			previousAnimatorBaseLayerStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+		}
+
+		// if in transition between two states (WARNING: for transition to be detected by IsInTransition(), the transition duration adjustment must not be 0)
+		if (animator.IsInTransition (0))
+		{
+			// if next state is PlayerDying and the death sound has not already been played since last respawn (see respawn() for toggle back to false)
+			if (animator.GetNextAnimatorStateInfo (0).IsTag ("PlayerDying") && !deathSoundPlayed)
+			{
+				takeDamageSound.Play ();
+				deathSoundPlayed = true;
+			}
+
+			// if leaving the PlayerDying state
+			if (previousAnimatorBaseLayerStateInfo.IsTag ("PlayerDying"))
+			{
+				respawn ();
+			}
+			// if leaving the PlayerKick state
+			else if (previousAnimatorBaseLayerStateInfo.IsTag ("PlayerKick"))
+			{
+
+				isKicking = false;
+			}
+			// if leaving the PlayerSpinKick state
+			else if (previousAnimatorBaseLayerStateInfo.IsTag ("PlayerSpinKick"))
+			{
+				isSpinKicking = false;
+			}
+		}
 		UpdateAnimator();
 	}
 
@@ -271,11 +311,6 @@ public class Player : MonoBehaviour
 		isSpinKickUnlocked = b;
 	}
 
-	public void playDeathSound()
-	{
-		takeDamageSound.Play ();
-	}
-
 	public bool isGrounded()
 	{
 		return grounded;
@@ -300,6 +335,7 @@ public class Player : MonoBehaviour
 			transform.position = currentCheckpoint.getRespawnPosition ();
 			isDead = false;
 			currentHealth = maxHealth;
+			deathSoundPlayed = false;
 		}
 	}
 	

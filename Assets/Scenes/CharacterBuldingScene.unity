@@ -682,6 +682,10 @@ Prefab:
       propertyPath: m_Name
       value: Player_Character
       objectReference: {fileID: 0}
+    - target: {fileID: 8249768, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b7bdd7a7b3e415459b81ebfd9260f39, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
   m_IsPrefabParent: 0

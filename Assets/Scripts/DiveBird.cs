@@ -23,7 +23,6 @@ public class DiveBird : MonoBehaviour
 	void Start ()
 	{
 		facingDirection = ((startFacingRight) ? -1 : 1) * Vector2.right;		// opposite because sprite is drawn facing left
-		Debug.Log (facingDirection);
 		animator = gameObject.GetComponentInChildren<Animator> ();
 	}
 			

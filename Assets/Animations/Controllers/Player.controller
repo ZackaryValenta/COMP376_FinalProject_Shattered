@@ -71,9 +71,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: isSpinKicking
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110228312}
   m_Solo: 0
@@ -109,9 +106,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
+  m_TransitionDuration: .0136020174
   m_TransitionOffset: 0
-  m_ExitTime: 2.47631618e-07
+  m_ExitTime: 2.46259162e-07
   m_HasExitTime: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -187,9 +184,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
+  m_TransitionDuration: 1.01728833
   m_TransitionOffset: 0
-  m_ExitTime: 0
+  m_ExitTime: 6.7732544e-09
   m_HasExitTime: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -250,9 +247,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isGrounded
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: isKicking
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110299868}
   m_Solo: 0
@@ -285,9 +279,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: .0143417343
-  m_ExitTime: .813482702
+  m_TransitionDuration: .0398414209
+  m_TransitionOffset: .0562693551
+  m_ExitTime: .8414343
   m_HasExitTime: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -311,7 +305,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .0368630067
+  m_TransitionDuration: .051568877
   m_TransitionOffset: 0
   m_ExitTime: .70588243
   m_HasExitTime: 0
@@ -337,9 +331,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .0135202026
+  m_TransitionDuration: .0218640044
   m_TransitionOffset: 0
-  m_ExitTime: .80392158
+  m_ExitTime: .803921521
   m_HasExitTime: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -360,9 +354,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .0144539103
+  m_TransitionDuration: .0248836018
   m_TransitionOffset: 0
-  m_ExitTime: .70588237
+  m_ExitTime: .70588243
   m_HasExitTime: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -409,9 +403,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .00974809099
-  m_TransitionOffset: .339910895
-  m_ExitTime: .990251958
+  m_TransitionDuration: .0203863941
+  m_TransitionOffset: .339911073
+  m_ExitTime: .990252078
   m_HasExitTime: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -428,9 +422,6 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isGrounded
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: isKicking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110239478}
@@ -516,8 +507,8 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .00336142117
-  m_TransitionOffset: .345535874
+  m_TransitionDuration: .022969244
+  m_TransitionOffset: .345535904
   m_ExitTime: .996638596
   m_HasExitTime: 0
   m_InterruptionSource: 0
@@ -562,18 +553,15 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: isKicking
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110228312}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .294117659
-  m_TransitionOffset: 0
-  m_ExitTime: .705882311
+  m_TransitionDuration: .196495682
+  m_TransitionOffset: .0976220295
+  m_ExitTime: .998748243
   m_HasExitTime: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -590,9 +578,6 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: isRunning
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: isKicking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110277096}
@@ -738,9 +723,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isRunning
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: isSpinKicking
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110277096}
   m_Solo: 0
@@ -775,7 +757,7 @@ AnimatorState:
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: 0155107c4c499344693c82e8e8502b12, type: 2}
-  m_Tag: 
+  m_Tag: PlayerIdle
 --- !u!1102 &110233404
 AnimatorState:
   serializedVersion: 5
@@ -783,7 +765,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PlayerKick
-  m_Speed: 2
+  m_Speed: 4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110133312}
@@ -796,7 +778,7 @@ AnimatorState:
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: 0636ae1b53c0e1345abd2d4a582edafb, type: 2}
-  m_Tag: 
+  m_Tag: PlayerKick
 --- !u!1102 &110239478
 AnimatorState:
   serializedVersion: 5
@@ -816,7 +798,7 @@ AnimatorState:
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: 3a25fdd66ff22e24885c62682f1a81ed, type: 2}
-  m_Tag: 
+  m_Tag: PlayerFalling
 --- !u!1102 &110270032
 AnimatorState:
   serializedVersion: 5
@@ -834,7 +816,7 @@ AnimatorState:
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: 38766fd09f1915449a30f378d7a9d461, type: 2}
-  m_Tag: 
+  m_Tag: PlayerDying
 --- !u!1102 &110273438
 AnimatorState:
   serializedVersion: 5
@@ -842,7 +824,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PlayerSpinKick
-  m_Speed: 1
+  m_Speed: 2.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110197012}
@@ -853,7 +835,7 @@ AnimatorState:
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: 1eda4959d1c6f9d4488b194cc33d673b, type: 2}
-  m_Tag: 
+  m_Tag: PlayerSpinKick
 --- !u!1102 &110277096
 AnimatorState:
   serializedVersion: 5
@@ -875,7 +857,7 @@ AnimatorState:
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: 72f8388a00a72d24a8f27be4e7b5aa92, type: 2}
-  m_Tag: 
+  m_Tag: PlayerRun
 --- !u!1102 &110286572
 AnimatorState:
   serializedVersion: 5
@@ -894,7 +876,7 @@ AnimatorState:
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: b6956c01c9e31b74c8c3a79e769d0071, type: 2}
-  m_Tag: 
+  m_Tag: PlayerJumpingUp
 --- !u!1102 &110299868
 AnimatorState:
   serializedVersion: 5
@@ -915,7 +897,7 @@ AnimatorState:
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: 18c73715cfc504e4eab7a6d0bbe230a7, type: 2}
-  m_Tag: 
+  m_Tag: PlayerJump
 --- !u!1107 &110713716
 AnimatorStateMachine:
   serializedVersion: 5
