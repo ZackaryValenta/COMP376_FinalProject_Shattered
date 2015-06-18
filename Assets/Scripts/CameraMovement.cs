@@ -55,24 +55,13 @@ public class CameraMovement : MonoBehaviour
 		{
 			Vector3 adjustDirection = Vector3.Normalize(new Vector3 (((target.position.x < leftBoundary) ? -1.0f : 1.0f), 0.0f, 0.0f));
 			newPosition += adjustDirection * speed * Time.deltaTime;
-			Debug.Log ("player " + target.position.x + " left " + leftBoundary + " right " + rightBoundary + " adjust " + adjustDirection);
 		}
 
 		if (target.position.y < lowerBoundary || target.position.y > upperBoundary)
 		{
 			Vector3 adjustDirection = Vector3.Normalize(new Vector3 (0.0f, ((target.position.y < lowerBoundary) ? -1.0f : 1.0f), 0.0f));
 			newPosition += adjustDirection * speed * Time.deltaTime;
-			Debug.Log ("player " + target.position.y + " lower " + lowerBoundary + " upper " + upperBoundary + " adjust " + adjustDirection);
 		}
-		/*
-		if (target.position.x < leftBoundary || target.position.x > rightBoundary ||
-		    target.position.y < lowerBoundary || target.position.y > upperBoundary)
-		{
-			Debug.Log ("target: " + target.position +
-			           "old cam: " + transform.position +
-			           "new cam: " + newPosition);
-		}
-		*/
 		transform.position = newPosition;
     }
 }
