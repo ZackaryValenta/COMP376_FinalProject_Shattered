@@ -77,6 +77,7 @@ public class Player : MonoBehaviour
 
 		grounded             = true;
 		isDoubleJumpUnlocked = false;
+		//isDoubleJumpUnlocked = true;
 		isSpinKickUnlocked   = false;
 		allowDoubleJump      = true;
 		isKicking            = false;
