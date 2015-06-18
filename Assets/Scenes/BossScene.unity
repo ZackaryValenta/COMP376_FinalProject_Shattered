@@ -2477,6 +2477,10 @@ Prefab:
       propertyPath: m_GravityScale
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11436636, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
+      propertyPath: fallDamage
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
   m_IsPrefabParent: 0
@@ -4075,6 +4079,10 @@ Prefab:
       propertyPath: playerCoordinates
       value: 
       objectReference: {fileID: 730980171}
+    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: life
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
   m_IsPrefabParent: 0

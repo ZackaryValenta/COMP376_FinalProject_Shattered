@@ -154,6 +154,21 @@ public class Boss : MonoBehaviour
         }
     }
 
+	private void CanIRevive()
+	{
+		if (revivers > 0) {
+			_animator.SetBool("Dying", false);
+			_animator.SetBool("Moving", true);
+			life = MaxLives;
+
+			currentState = ActionState.GettingReadyToIdle;
+			cutting = false;
+			SawCanCut = false;
+			sawHandle.transform.position = sawHandleDefaultPosition;
+			sawHandle.transform.rotation = sawHandleDefaultRotation;
+		}
+	}
+
     private void MoveToAttack(Vector3 targetLocation)
     {
         positionNotchanging = moveBossGameObject.transform.position;
@@ -254,7 +269,7 @@ public class Boss : MonoBehaviour
     public void TakeDamge()
     {
         life--;
-        //playerScript.ForcedStun(25);
+        playerScript.ForcedStun(10);
         //TODO sounds and whatever else when taking damage.
     }
 }
