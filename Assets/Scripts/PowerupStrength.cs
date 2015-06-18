@@ -8,6 +8,7 @@ public class PowerupStrength : MonoBehaviour {
 		if (col.gameObject.CompareTag("Player"))
 		{
 			col.gameObject.GetComponent<Player>().setSpinKickUnlocked(true);
+			col.gameObject.GetComponent<Player>().triggerSpinKicking ();
 			Destroy (gameObject);
 		}
 	}

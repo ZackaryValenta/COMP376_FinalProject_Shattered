@@ -266,19 +266,15 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	public void toggleSpinKicking()
+	public void triggerSpinKicking()
 	{
-		isSpinKicking = !isSpinKicking;
+		spinKickSound.Play ();
+		isSpinKicking = true;
 	}
 
 	public bool checkIfSpinKicking()
 	{
 		return isSpinKicking;
-	}
-
-	public void toggleKicking()
-	{
-		isKicking = !isKicking;
 	}
 	
 	public bool checkIfKicking()

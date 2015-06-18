@@ -1907,12 +1907,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 01281c361c4a6684fa3a03b38b8d6b83, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &79174336 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11467544, guid: 53a97aa840ee15b438831151ec094e07,
-    type: 2}
-  m_PrefabInternal: {fileID: 1098803842}
-  m_Script: {fileID: 11500000, guid: c298cd431b08f7b4b8a3563ccd675380, type: 3}
 --- !u!1001 &80147931
 Prefab:
   m_ObjectHideFlags: 0
@@ -5749,6 +5743,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 252584765}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -6157,7 +6152,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 412226, guid: 53a97aa840ee15b438831151ec094e07, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 475.459991
+      value: 475.079987
       objectReference: {fileID: 0}
     - target: {fileID: 412226, guid: 53a97aa840ee15b438831151ec094e07, type: 2}
       propertyPath: m_LocalPosition.y
@@ -8131,6 +8126,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 352199926}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -9095,6 +9091,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 394908246}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -10430,7 +10427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &430746579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11279,6 +11276,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 472342045}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -13886,6 +13884,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 559977580}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -16343,6 +16342,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 676135016}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -17761,6 +17761,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 751382677}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -19251,6 +19252,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 810478746}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -19786,6 +19788,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 833947094}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -22546,6 +22549,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 959434085}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -24836,6 +24840,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1053400489}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -25931,6 +25936,131 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400246, guid: 2bda964c1df9b3342aa242a9d2e63f24, type: 2}
   m_PrefabInternal: {fileID: 1084332469}
+--- !u!1 &1087332674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1087332675}
+  - 58: {fileID: 1087332678}
+  - 114: {fileID: 1087332677}
+  - 82: {fileID: 1087332676}
+  m_Layer: 8
+  m_Name: VoiceHint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1087332675
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087332674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1314356320}
+  m_RootOrder: 0
+--- !u!82 &1087332676
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087332674}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b4389b4382944da489abca0f707ab87c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!114 &1087332677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087332674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87b149fea96c3e4db5baa3e9ba2b055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialDelay: 10
+  delayBetweenRepeats: 20
+--- !u!58 &1087332678
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087332674}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -1, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.61869121
 --- !u!1 &1091499709
 GameObject:
   m_ObjectHideFlags: 0
@@ -30485,6 +30615,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1264960047}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -31566,7 +31697,7 @@ GameObject:
   - 212: {fileID: 1314356322}
   - 95: {fileID: 1314356323}
   - 114: {fileID: 1314356324}
-  - 58: {fileID: 1314356321}
+  - 61: {fileID: 1314356321}
   m_Layer: 8
   m_Name: shroom5
   m_TagString: Untagged
@@ -31583,11 +31714,12 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 219.300003, y: 15.8999996, z: 0}
   m_LocalScale: {x: 11, y: 11, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1087332675}
   m_Father: {fileID: 1161707087}
   m_RootOrder: 30
---- !u!58 &1314356321
-CircleCollider2D:
+--- !u!61 &1314356321
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -31596,9 +31728,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -3.81469727e-06, y: 0}
+  m_Offset: {x: .217312902, y: -.115904897}
   serializedVersion: 2
-  m_Radius: 1.27999997
+  m_Size: {x: 1.89355719, y: 2.32818842}
 --- !u!212 &1314356322
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33775,11 +33907,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 441990, guid: c49c0b18e65a0444eadfa842e3f04ddf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -68.8735123
+      value: -69.3799973
       objectReference: {fileID: 0}
     - target: {fileID: 441990, guid: c49c0b18e65a0444eadfa842e3f04ddf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.40583634
+      value: -1.85000002
       objectReference: {fileID: 0}
     - target: {fileID: 441990, guid: c49c0b18e65a0444eadfa842e3f04ddf, type: 2}
       propertyPath: m_LocalPosition.z
@@ -34672,7 +34804,7 @@ Prefab:
     - target: {fileID: 11436636, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
       propertyPath: currentCheckpoint
       value: 
-      objectReference: {fileID: 79174336}
+      objectReference: {fileID: 2100929817}
     - target: {fileID: 412896, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
       propertyPath: m_LocalPosition.x
       value: -.0590000004
@@ -38954,6 +39086,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1624267535}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -39805,6 +39938,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1683914345}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -45662,11 +45796,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1439772720}
   usePlayerSpeed: 1
-  cameraSpeed: 25
+  cameraSpeed: 0
   distantSpeedMultiplier: 10
-  multiplyDistance: 100
-  hortizontalBufferPercentage: .300000012
-  verticalBufferPercentage: .300000012
+  multiplyDistance: 50
+  aheadPlayerBufferPercentage: .600000024
+  behindPlayerBufferPercentage: .25
+  topBufferPercentage: .349999994
+  bottomBufferPercentage: .349999994
   camera: {fileID: 0}
 --- !u!114 &1975338638
 MonoBehaviour:
@@ -47225,6 +47361,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2041134853}
   m_Enabled: 1
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -47889,6 +48026,7 @@ PlatformEffector2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2061183092}
   m_Enabled: 0
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -48863,6 +49001,12 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 8a6508f4e0ba58b4882b94b99ae59b66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &2100929817 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11467544, guid: 53a97aa840ee15b438831151ec094e07,
+    type: 2}
+  m_PrefabInternal: {fileID: 285382345}
+  m_Script: {fileID: 11500000, guid: c298cd431b08f7b4b8a3563ccd675380, type: 3}
 --- !u!1 &2100979404
 GameObject:
   m_ObjectHideFlags: 0

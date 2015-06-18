@@ -24,7 +24,6 @@ public class DestoryBurger : MonoBehaviour {
 	{
 		if (col.gameObject.CompareTag ("Player"))
 		{
-			Debug.Log("heyyyyyyyyy");
 			Instantiate (explode, transform.position, transform.rotation);
 			Destroy (gameObject);
 		}
