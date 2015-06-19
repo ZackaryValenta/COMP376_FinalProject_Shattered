@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	float jumpUpForce;
 	[SerializeField]
+	float doubleJumpUpForce;
+	[SerializeField]
 	float jumpMomentumForce;
 	[SerializeField]
 	float jumpDownForce;

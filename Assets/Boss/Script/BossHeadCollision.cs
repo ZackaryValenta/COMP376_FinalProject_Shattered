@@ -14,7 +14,9 @@ public class BossHeadCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
-            bossScript.TakeDamge();
+		if (other.CompareTag ("Player") && other.gameObject.GetComponent<Player> ().checkIfKicking() )
+		{
+				bossScript.TakeDamge ();
+		}
     }
 }

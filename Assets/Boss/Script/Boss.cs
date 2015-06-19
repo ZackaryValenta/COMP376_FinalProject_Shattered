@@ -8,6 +8,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject moveBossGameObject;
     [SerializeField] private Transform playerCoordinates;
     [SerializeField] private GameObject sawHandle;
+	[SerializeField] private GameObject damageTaken;
     [SerializeField] private float swingVelocity = 80;
     [SerializeField] private float slamDropHeight = 30;
     [SerializeField] private float slamUpSpeed = 20;
@@ -39,10 +40,12 @@ public class Boss : MonoBehaviour
 
     public bool SlammingDown = false; //DirectionDown
     public bool Vulnerable = false;
-    public int life = 3;
+    public int lives;
     private const int MaxLives = 3;
 
     private Player playerScript;
+
+	Text livesText;
 
     private bool moving = false;
     private bool dying = false;
@@ -70,6 +73,8 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
+		livesText = GameObject.Find ("Lives").GetComponent<Text> ();
+		livesText.text = "Boss Lives: " + lives;
         currentState = ActionState.Idle;
         StartCoroutine(CreateAttacks());
         GetRequiredComponents();
@@ -118,7 +123,7 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        if (life == 0)
+        if (lives == 0)
         {
             GameOver();
             return;
@@ -144,7 +149,7 @@ public class Boss : MonoBehaviour
             if (revivers > 0)
             {
                 _animator.SetBool("Dying", false);
-                life = MaxLives;
+                lives = MaxLives;
 
             }
             else
@@ -159,7 +164,7 @@ public class Boss : MonoBehaviour
 		if (revivers > 0) {
 			_animator.SetBool("Dying", false);
 			_animator.SetBool("Moving", true);
-			life = MaxLives;
+			lives = MaxLives;
 
 			currentState = ActionState.GettingReadyToIdle;
 			cutting = false;
@@ -268,7 +273,9 @@ public class Boss : MonoBehaviour
 
     public void TakeDamge()
     {
-        life--;
+        lives--;
+		livesText.text = "Boss Lives: " + lives;
+		Instantiate (damageTaken, transform.position, Quaternion.identity);
         playerScript.ForcedStun(10);
         //TODO sounds and whatever else when taking damage.
     }
