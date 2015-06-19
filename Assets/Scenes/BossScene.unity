@@ -3576,75 +3576,6 @@ CanvasRenderer:
 GameObject:
   m_PrefabParentObject: {fileID: 184088, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
   m_PrefabInternal: {fileID: 1624372324}
---- !u!82 &1318807937
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1318807932}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c1719b83e0a5f4dca9f0ddb4812bc8dc, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!1 &1323438688
 GameObject:
   m_ObjectHideFlags: 0
@@ -4270,38 +4201,6 @@ Prefab:
       propertyPath: playerCoordinates
       value: 
       objectReference: {fileID: 730980171}
-    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
-      propertyPath: life
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
-      propertyPath: damageTaken
-      value: 
-      objectReference: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
-    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
-      propertyPath: slamDropSpeed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
-      propertyPath: slamUpSpeed
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
-      propertyPath: swingVelocity
-      value: 350
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
-      propertyPath: WaitTimeBeforeAttacks
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
-      propertyPath: WaitTimeForDizzy
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
-      propertyPath: lives
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
   m_IsPrefabParent: 0

@@ -83,6 +83,7 @@ GameObject:
   - 114: {fileID: 11471958}
   - 95: {fileID: 9577472}
   - 50: {fileID: 5088464}
+  - 82: {fileID: 8256912}
   m_Layer: 0
   m_Name: BossNew
   m_TagString: Boss
@@ -343,6 +344,75 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -.870000005}
   serializedVersion: 2
   m_Size: {x: 2.07999992, y: .25}
+--- !u!82 &8256912
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184088}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c1719b83e0a5f4dca9f0ddb4812bc8dc, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9549986
 Animator:
   serializedVersion: 3
@@ -428,18 +498,26 @@ MonoBehaviour:
   moveBossGameObject: {fileID: 184088}
   playerCoordinates: {fileID: 0}
   sawHandle: {fileID: 142890}
-  swingVelocity: 150
+  damageTaken: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
+  swingVelocity: 350
   slamDropHeight: 40
-  slamUpSpeed: 30
-  slamDropSpeed: 70
-  WaitTimeBeforeAttacks: 4
+  slamUpSpeed: 40
+  slamDropSpeed: 100
+  WaitTimeBeforeAttacks: 2
   WaitTimeBeforeShockOver: 3
-  WaitTimeForDizzy: 5
+  WaitTimeForDizzy: 3
+  angryScreamClip: {fileID: 8300000, guid: b8e81eab2ca901340b6bc3fcdbb7155e, type: 3}
+  bossKickinHeadClip: {fileID: 8300000, guid: c1719b83e0a5f4dca9f0ddb4812bc8dc, type: 3}
+  dieScreamClip: {fileID: 8300000, guid: b25abe8180336094d89643cb127aabe9, type: 3}
+  evilLaughClip: {fileID: 8300000, guid: 66cefb891902e324b9d2eed7658ba1bb, type: 3}
+  sawAttackClip: {fileID: 8300000, guid: fa01e51206ba9794e9917858d324b5ba, type: 3}
+  slamAttackClip: {fileID: 8300000, guid: f384a8ad23e541942982428c46202428, type: 3}
   SawCanCut: 0
   slamShockTime: 5
   SlammingDown: 0
   Vulnerable: 0
-  life: 6
+  currentLives: 6
+  MaxLives: 6
 --- !u!114 &11479284
 MonoBehaviour:
   m_ObjectHideFlags: 1

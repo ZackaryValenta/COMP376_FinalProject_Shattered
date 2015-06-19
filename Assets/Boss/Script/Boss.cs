@@ -17,6 +17,12 @@ public class Boss : MonoBehaviour
     [SerializeField] private float WaitTimeBeforeShockOver = 3;
     [SerializeField] private float WaitTimeForDizzy = 5;
 
+    [SerializeField] private AudioClip angryScreamClip;
+    [SerializeField] private AudioClip bossKickinHeadClip;
+    [SerializeField] private AudioClip dieScreamClip;
+    [SerializeField] private AudioClip evilLaughClip;
+    [SerializeField] private AudioClip sawAttackClip;
+    [SerializeField] private AudioClip slamAttackClip;
 
     private Animator _animator;
     private Rigidbody2D _rigidBody;
@@ -40,8 +46,8 @@ public class Boss : MonoBehaviour
 
     public bool SlammingDown = false; //DirectionDown
     public bool Vulnerable = false;
-    public int lives;
-    private const int MaxLives = 3;
+    public int currentLives = 6;
+    [SerializeField] private int MaxLives = 6;
 
     private Player playerScript;
 
@@ -74,7 +80,7 @@ public class Boss : MonoBehaviour
     void Start()
     {
 		livesText = GameObject.Find ("Lives").GetComponent<Text> ();
-		livesText.text = "Boss Lives: " + lives;
+		livesText.text = "Boss Lives: " + currentLives;
         currentState = ActionState.Idle;
         StartCoroutine(CreateAttacks());
         GetRequiredComponents();
@@ -123,7 +129,7 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        if (lives == 0)
+        if (currentLives == 0)
         {
             GameOver();
             return;
@@ -143,13 +149,14 @@ public class Boss : MonoBehaviour
         _animator.enabled = true;
         _animator.SetBool("Dying", true);
         _animator.SetBool("Moving", false);
+        AudioSource.PlayClipAtPoint(angryScreamClip, transform.position);
 
         if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Dying"))
         {
             if (revivers > 0)
             {
                 _animator.SetBool("Dying", false);
-                lives = MaxLives;
+                currentLives = MaxLives;
 
             }
             else
@@ -164,13 +171,15 @@ public class Boss : MonoBehaviour
 		if (revivers > 0) {
 			_animator.SetBool("Dying", false);
 			_animator.SetBool("Moving", true);
-			lives = MaxLives;
+			currentLives = MaxLives;
 
 			currentState = ActionState.GettingReadyToIdle;
 			cutting = false;
 			SawCanCut = false;
 			sawHandle.transform.position = sawHandleDefaultPosition;
 			sawHandle.transform.rotation = sawHandleDefaultRotation;
+
+            AudioSource.PlayClipAtPoint(evilLaughClip, transform.position);
 		}
 	}
 
@@ -207,6 +216,7 @@ public class Boss : MonoBehaviour
                     cutting = true;
                     sawHandleDefaultPosition = sawHandle.transform.position;
                     sawHandleDefaultRotation = sawHandle.transform.rotation;
+                    AudioSource.PlayClipAtPoint(sawAttackClip, transform.position);
                 }
                 else
                 {
@@ -255,6 +265,7 @@ public class Boss : MonoBehaviour
             slammingAction = false;
             cameraShake.ShakeFor(slamShockTime);
             playerScript.ForcedStun(25);
+            AudioSource.PlayClipAtPoint(slamAttackClip, transform.position);
         }
     }
 
@@ -273,10 +284,11 @@ public class Boss : MonoBehaviour
 
     public void TakeDamge()
     {
-        lives--;
-		livesText.text = "Boss Lives: " + lives;
+        currentLives--;
+		livesText.text = "Boss Lives: " + currentLives;
 		Instantiate (damageTaken, transform.position + new Vector3(0.0f, 0.0f, 30.0f), Quaternion.identity);
+        AudioSource.PlayClipAtPoint(dieScreamClip, transform.position);
         playerScript.ForcedStun(10);
-        //TODO sounds and whatever else when taking damage.
+        //TODO whatever else when taking damage.
     }
 }
