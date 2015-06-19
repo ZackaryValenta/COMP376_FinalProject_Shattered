@@ -275,7 +275,7 @@ public class Boss : MonoBehaviour
     {
         lives--;
 		livesText.text = "Boss Lives: " + lives;
-		Instantiate (damageTaken, transform.position, Quaternion.identity);
+		Instantiate (damageTaken, transform.position + new Vector3(0.0f, 0.0f, 30.0f), Quaternion.identity);
         playerScript.ForcedStun(10);
         //TODO sounds and whatever else when taking damage.
     }

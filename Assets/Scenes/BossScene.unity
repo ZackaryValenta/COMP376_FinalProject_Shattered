@@ -4264,7 +4264,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436228, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
       propertyPath: playerCoordinates
@@ -4288,11 +4288,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
       propertyPath: swingVelocity
-      value: 300
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
       propertyPath: WaitTimeBeforeAttacks
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
       propertyPath: WaitTimeForDizzy
