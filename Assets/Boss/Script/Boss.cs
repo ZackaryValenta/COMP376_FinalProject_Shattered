@@ -176,8 +176,7 @@ public class Boss : MonoBehaviour
 			currentState = ActionState.GettingReadyToIdle;
 			cutting = false;
 			SawCanCut = false;
-			sawHandle.transform.position = sawHandleDefaultPosition;
-			sawHandle.transform.rotation = sawHandleDefaultRotation;
+
 
             AudioSource.PlayClipAtPoint(evilLaughClip, transform.position);
 		}
