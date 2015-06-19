@@ -34641,7 +34641,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 405410, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11436636, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
       propertyPath: currentCheckpoint
