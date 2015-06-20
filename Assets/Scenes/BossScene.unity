@@ -4242,6 +4242,14 @@ Prefab:
       propertyPath: playerCoordinates
       value: 
       objectReference: {fileID: 730980171}
+    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: MaxLives
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: currentLives
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
   m_IsPrefabParent: 0
@@ -4463,11 +4471,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: f668567adcd07ab4abdedef2eb90196e, type: 3}
-  - {fileID: 21300000, guid: bab7a445e7b58c14ea6d9f2fb8e63315, type: 3}
-  - {fileID: 21300000, guid: 14853319a37f65e459af9ac73e8fa17b, type: 3}
-  - {fileID: 21300000, guid: c112e1bcdbd0265418d412d04a3928de, type: 3}
-  - {fileID: 21300000, guid: d0455de11920af24b85cb015912ad2e2, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!95 &1710215480
 Animator:
   serializedVersion: 3

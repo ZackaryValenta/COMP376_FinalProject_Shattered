@@ -129,7 +129,7 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        if (currentLives == 0)
+        if (currentLives <= 0)
         {
             GameOver();
             return;
@@ -280,6 +280,10 @@ public class Boss : MonoBehaviour
         //TODO Disable Boss and Dizzy for a moment.
     }
 
+	public int getCurrentLives()
+	{
+		return currentLives;
+	}
 
     public void TakeDamge()
     {
