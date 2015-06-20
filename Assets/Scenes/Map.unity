@@ -3986,7 +3986,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -102, y: 0}
   serializedVersion: 2
   m_Radius: 4.17022705
 --- !u!114 &172330979
@@ -21212,6 +21212,12 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 01281c361c4a6684fa3a03b38b8d6b83, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &918773310 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11467544, guid: 53a97aa840ee15b438831151ec094e07,
+    type: 2}
+  m_PrefabInternal: {fileID: 1098803842}
+  m_Script: {fileID: 11500000, guid: c298cd431b08f7b4b8a3563ccd675380, type: 3}
 --- !u!1 &922601015
 GameObject:
   m_ObjectHideFlags: 0
@@ -30155,12 +30161,6 @@ PlatformEffector2D:
 Transform:
   m_PrefabParentObject: {fileID: 412226, guid: 53a97aa840ee15b438831151ec094e07, type: 2}
   m_PrefabInternal: {fileID: 283253724}
---- !u!114 &1268354194 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11467544, guid: 53a97aa840ee15b438831151ec094e07,
-    type: 2}
-  m_PrefabInternal: {fileID: 283253724}
-  m_Script: {fileID: 11500000, guid: c298cd431b08f7b4b8a3563ccd675380, type: 3}
 --- !u!1 &1269523658
 GameObject:
   m_ObjectHideFlags: 0
@@ -34138,7 +34138,7 @@ Prefab:
     - target: {fileID: 11436636, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
       propertyPath: currentCheckpoint
       value: 
-      objectReference: {fileID: 1268354194}
+      objectReference: {fileID: 918773310}
     - target: {fileID: 412896, guid: ae4e1c1835da55d419970ccd040b4441, type: 2}
       propertyPath: m_LocalPosition.x
       value: -.0590000004
