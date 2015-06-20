@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour {
 	
         if (playerScript.getCurrentHealth() <= 0)
             Application.LoadLevel("GameOver");
-		if (bossScript.getCurrentLives () <= 0)
-			Application.LoadLevel ("GameOver");
+		//if (bossScript.getCurrentLives () <= 0)
+		//	Application.LoadLevel ("GameOver");
 	}
 }

@@ -56,6 +56,8 @@ public class Boss : MonoBehaviour
     private bool moving = false;
     private bool dying = false;
 
+	private bool isGameOver;
+
     private enum AttackPattern
     {
         DropDown,
@@ -84,6 +86,7 @@ public class Boss : MonoBehaviour
         currentState = ActionState.Idle;
         StartCoroutine(CreateAttacks());
         GetRequiredComponents();
+		isGameOver = false;
     }
 
     private void GetRequiredComponents()
@@ -129,12 +132,17 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        if (currentLives <= 0)
+        if (currentLives <= 0 && isGameOver == false)
         {
+			isGameOver = true;
             GameOver();
             return;
         }
 
+//		if (currentLives <= 0 && !(_animator.GetBool ("Dying"))) 
+//		{
+//			Application.LoadLevel("GameOver");
+//		}
 
         if (currentState == ActionState.GettingReadyToAttack)
             MoveToAttack(GetLocationToAttack());    //Change to Constant Location
@@ -142,6 +150,7 @@ public class Boss : MonoBehaviour
             Attack();
         else if (currentState == ActionState.GettingReadyToIdle)
             MoveBackToNormal();
+	
     }
 
     private void GameOver()
@@ -164,6 +173,7 @@ public class Boss : MonoBehaviour
                 
             }
         }
+		isGameOver = true;
     }
 
 	private void CanIRevive()
