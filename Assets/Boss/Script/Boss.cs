@@ -138,11 +138,8 @@ public class Boss : MonoBehaviour
             GameOver();
             return;
         }
-
-//		if (currentLives <= 0 && !(_animator.GetBool ("Dying"))) 
-//		{
-//			Application.LoadLevel("GameOver");
-//		}
+        if (isGameOver)
+            return;
 
         if (currentState == ActionState.GettingReadyToAttack)
             MoveToAttack(GetLocationToAttack());    //Change to Constant Location
@@ -189,6 +186,10 @@ public class Boss : MonoBehaviour
 
 
             AudioSource.PlayClipAtPoint(evilLaughClip, transform.position);
+		}
+		else
+		{
+		    Application.LoadLevel("GameOver");
 		}
 	}
 
