@@ -103,7 +103,7 @@ public class Boss : MonoBehaviour
     {
         while (true)
         {
-            if (currentState != ActionState.Idle)
+            if (currentState != ActionState.Idle || isGameOver)
             {
                 yield return new WaitForSeconds(WaitTimeBeforeAttacks);
                 continue;
@@ -156,21 +156,8 @@ public class Boss : MonoBehaviour
         _animator.SetBool("Dying", true);
         _animator.SetBool("Moving", false);
         AudioSource.PlayClipAtPoint(angryScreamClip, transform.position);
-
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Dying"))
-        {
-            if (revivers > 0)
-            {
-                _animator.SetBool("Dying", false);
-                currentLives = MaxLives;
-
-            }
-            else
-            {
-                
-            }
-        }
 		isGameOver = true;
+        Debug.Log("DEAD");
     }
 
 	private void CanIRevive()
@@ -183,8 +170,7 @@ public class Boss : MonoBehaviour
 			currentState = ActionState.GettingReadyToIdle;
 			cutting = false;
 			SawCanCut = false;
-
-
+		    isGameOver = false;
             AudioSource.PlayClipAtPoint(evilLaughClip, transform.position);
 		}
 		else
