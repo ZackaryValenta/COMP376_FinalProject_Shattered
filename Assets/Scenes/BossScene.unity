@@ -1530,6 +1530,28 @@ Transform:
   - {fileID: 681087347}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!1 &592041723 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 186268, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+  m_PrefabInternal: {fileID: 1624372324}
+--- !u!60 &592041724
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 592041723}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: .0188347716, y: .378452063}
+      - {x: .624586999, y: .202286363}
+      - {x: .593598545, y: -.0191487074}
+      - {x: .0695517063, y: -.680369496}
+      - {x: -.631784439, y: .112991333}
 --- !u!1 &600322628
 GameObject:
   m_ObjectHideFlags: 0
@@ -4244,13 +4266,54 @@ Prefab:
       objectReference: {fileID: 730980171}
     - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
       propertyPath: MaxLives
-      value: 1
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
       propertyPath: currentLives
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: swingVelocity
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: slamDropSpeed
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: WaitTimeBeforeAttacks
+      value: 1.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: WaitTimeBeforeShockOver
+      value: 1.70000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: WaitTimeForDizzy
+      value: 1.70000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 484344, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.10500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 484344, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -.00499999989
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: slamDropHeight
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: slamUpSpeed
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471958, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
+      propertyPath: slamShockTime
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6109780, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 64102fdc89fa31f4898ee550cdcd3083, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1654495873

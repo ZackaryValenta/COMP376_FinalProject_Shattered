@@ -13,7 +13,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private float slamDropHeight = 30;
     [SerializeField] private float slamUpSpeed = 20;
     [SerializeField] private float slamDropSpeed = 40;
-    [SerializeField] private float WaitTimeBeforeAttacks = 8;
+    [SerializeField] private float WaitTimeBeforeAttacks = 2.5F;
     [SerializeField] private float WaitTimeBeforeShockOver = 3;
     [SerializeField] private float WaitTimeForDizzy = 5;
 
@@ -282,7 +282,7 @@ public class Boss : MonoBehaviour
 		return currentLives;
 	}
 
-    public void TakeDamge()
+    public void TakeDamage()
     {
         currentLives--;
 		livesText.text = "Boss Lives: " + currentLives;
