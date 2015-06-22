@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EnemySparrowSprite : MonoBehaviour
@@ -25,6 +25,15 @@ public class EnemySparrowSprite : MonoBehaviour
 	}
 	
 	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.CompareTag("Player") &&
+		    (col.gameObject.GetComponent<Player> ().checkIfKicking () || col.gameObject.GetComponent<Player> ().checkIfSpinKicking ()))
+		{
+			isDead = true;
+		}
+	}
+
+	void OnTriggerStay2D(Collider2D col)
 	{
 		if (col.gameObject.CompareTag("Player") &&
 		    (col.gameObject.GetComponent<Player> ().checkIfKicking () || col.gameObject.GetComponent<Player> ().checkIfSpinKicking ()))
