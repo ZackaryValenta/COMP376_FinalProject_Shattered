@@ -58,4 +58,17 @@ public class DiveBirdSprite : MonoBehaviour
 			setAttackingFalse();
 		}
 	}
+
+	void OnTriggerStay2D(Collider2D col)
+	{
+		if (col.gameObject.CompareTag("Player"))
+		{
+			if (col.gameObject.GetComponent<Player> ().checkIfKicking () || col.gameObject.GetComponent<Player> ().checkIfSpinKicking ())
+			{
+				isDead = true;
+			}
+			hitPlayer = true;
+			setAttackingFalse();
+		}
+	}
 }
