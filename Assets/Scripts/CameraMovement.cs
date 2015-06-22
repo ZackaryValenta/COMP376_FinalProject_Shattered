@@ -5,7 +5,9 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] private Transform target;
 	[SerializeField] private bool usePlayerSpeed;
-	[SerializeField] private float cameraSpeed;						// speed at which to follow player, if not matching player speed
+	[SerializeField] private float playerSpeedOffset;				// used to offset from the player speed being fetched from target
+	[SerializeField] private float cameraGroundedSpeed;				// speed at which to follow player, if not matching player speed and player is grounded
+	[SerializeField] private float cameraUngroundedSpeed;			// speed at which to follow player, if not matching player speed and player is not grounded
 	[SerializeField] private float distantSpeedMultiplier;			// when camera is far from player, scale speed to return faster
 	[SerializeField] private float multiplyDistance;				// distance from player above which camera should speed up
 	[SerializeField] private float aheadPlayerBufferPercentage;
@@ -22,11 +24,12 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-		float speed = cameraSpeed;
+		float speed = (target.gameObject.GetComponent<Player> ().isGrounded ()) ? cameraGroundedSpeed : cameraUngroundedSpeed;
 		if (usePlayerSpeed)
 		{
 			speed = (target.gameObject.GetComponent<Player> ().isGrounded ()) ? target.gameObject.GetComponent<Player> ().getSpeed() :
 																				target.gameObject.GetComponent<Player> ().getUngroundedSpeed ();
+			speed += playerSpeedOffset;
 		}
 
 		if (Mathf.Abs (Vector3.Magnitude (target.position - transform.position)) > multiplyDistance)

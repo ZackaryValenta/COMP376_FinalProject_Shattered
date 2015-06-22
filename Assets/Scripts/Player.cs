@@ -246,7 +246,7 @@ public class Player : MonoBehaviour
 			isKicking = true;
 		}
 		
-		if(Input.GetButton ("SpinKick") && !Input.GetButton ("Kick") && isSpinKickUnlocked)
+		if(Input.GetButton ("SpinKick") && !Input.GetButton ("Kick") && grounded && isSpinKickUnlocked)
 		{
 			spinKickSound.Play ();
 			isSpinKicking = true;
